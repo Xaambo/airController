@@ -18,7 +18,7 @@ public class AvioCombat extends Avio {
         return misils;
     }
 
-    public boolean isAmic() {
+    public boolean getAmic() {
         return amic;
     }
 

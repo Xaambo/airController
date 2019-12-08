@@ -125,6 +125,15 @@ public class Print {
         System.out.println();
     }
 
+    public void errorPilot() {
+        System.out.println("" +
+                "ERROR\n" +
+                "=====\n" +
+                "\n" +
+                "No pots fer això, sería catastròfic.\n" +
+                "\n");
+    }
+
     public boolean llistaAvions(ArrayList<Avio> avions) {
 
         boolean algunAvio = false;

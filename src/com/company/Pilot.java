@@ -20,17 +20,11 @@ public class Pilot {
         while (opcio != 0) {
             switch (opcio) {
                 case 1:
-                    if (avio.getMotor()) {
-                        avio.apagarMotor();
-                    } else {
-                        avio.encendreMotor();
-                    }
+                    avio = motor(avio);
                     break;
                 case 2:
-
-                    break;
                 case 3:
-
+                    avio = velocitat(avio);
                     break;
                 case 4:
 
@@ -82,5 +76,43 @@ public class Pilot {
         }
 
         print.YareYareDaze();
+    }
+
+    public Avio motor(Avio avio) {
+
+        if (avio.getMotor()) {
+            if (avio.getVelocitat() > 0) {
+                print.errorPilot();
+            } else {
+                avio.apagarMotor();
+            }
+        } else {
+            avio.encendreMotor();
+        }
+
+        return avio;
+    }
+
+    public Avio velocitat(Avio avio) {
+
+        int novaVelocitat;
+
+        novaVelocitat = teclat.llegirEnter("Velocitat desitjada?");
+
+        while (novaVelocitat < 0) {
+            novaVelocitat = teclat.llegirEnter("Velocitat desitjada?");
+        }
+
+        if (novaVelocitat == 0) {
+            if (avio.getPosicioRumb().getY() > 0) {
+                print.errorPilot();
+            } else {
+                avio.setVelocitat(novaVelocitat);
+            }
+        } else {
+            avio.setVelocitat(novaVelocitat);
+        }
+
+        return avio;
     }
 }

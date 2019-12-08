@@ -7,6 +7,7 @@ public abstract class Avio {
     private String model;
     private int tripulacio;
     private Coordenada posicioRumb;
+    private int velocitat = 0;
     private int autonomia = 3000;
     private boolean motor = false;
     private boolean trenAterratge = true;
@@ -39,6 +40,14 @@ public abstract class Avio {
 
     public Coordenada getPosicioRumb() {
         return posicioRumb;
+    }
+
+    public int getVelocitat() {
+        return velocitat;
+    }
+
+    public void setVelocitat(int velocitat) {
+        this.velocitat = velocitat;
     }
 
     public int getAutonomia() {
