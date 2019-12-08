@@ -8,17 +8,26 @@ public class Pilot {
     public void controlAvio(Avio avio) {
 
         int opcio;
+        boolean deCombat = avio.getDeCombat();
 
-        print.printControladorAeri();
+        if (!deCombat) {
+            print.printControladorAvio();
+        } else {
+            print.printControladorAvioCombat();
+        }
 
         opcio = teclat.llegirEnter("Què vols fer? ");
         while (opcio != 0) {
             switch (opcio) {
                 case 1:
-                    avio.encendreMotor();
+                    if (avio.getMotor()) {
+                        avio.apagarMotor();
+                    } else {
+                        avio.encendreMotor();
+                    }
                     break;
                 case 2:
-                    avio.apagarMotor();
+
                     break;
                 case 3:
 
@@ -29,10 +38,46 @@ public class Pilot {
                 case 5:
 
                     break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+                case 8:
+                    if (avio.getTrenAterratge()) {
+                        avio.pujarTren();
+                    } else {
+                        avio.baixarTren();
+                    }
+                    break;
+                case 9:
+
+                    break;
+                case 10:
+                    if (deCombat) {
+
+                    } else {
+                        print.blocked();
+                    }
+                    break;
+                case 11:
+                    if (deCombat) {
+
+                    } else {
+                        print.blocked();
+                    }
+                    break;
                 default:
                     print.printNoOpcioSwitch();
             }
-            print.printControladorAeri();
+
+            if (!deCombat) {
+                print.printControladorAvio();
+            } else {
+                print.printControladorAvioCombat();
+            }
+
             opcio = teclat.llegirEnter("Què vols fer? ");
         }
 

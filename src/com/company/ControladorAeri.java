@@ -176,7 +176,7 @@ public class ControladorAeri {
             if (avio == 1) {
                 avions.add(/*avions.lastIndexOf(null),*/ new AvioComercial(matricula, marca, model, tripulacio, posicioRumb, maxPassatgers, false));
             } else {
-                avions.add(/*avions.lastIndexOf(null),*/ new AvioCombat(matricula, marca, model, tripulacio, posicioRumb, misils, true));
+                avions.add(/*avions.lastIndexOf(null),*/ new AvioCombat(matricula, marca, model, tripulacio, posicioRumb, misils, true, true));
             }
             avioCorrecte = true;
 

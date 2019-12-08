@@ -45,6 +45,18 @@ public abstract class Avio {
         return autonomia;
     }
 
+    public boolean getMotor() {
+        return motor;
+    }
+
+    public boolean getDeCombat() {
+        return deCombat;
+    }
+
+    public boolean getTrenAterratge() {
+        return trenAterratge;
+    }
+
     public void encendreMotor() {
         this.motor = true;
     }
@@ -61,12 +73,8 @@ public abstract class Avio {
         this.trenAterratge = false;
     }
 
-    public boolean getDeCombat() {
-        return deCombat;
-    }
-
-    public void setDeCombat(boolean deCombat) {
-        this.deCombat = deCombat;
+    public void alcada(int metres) {
+        posicioRumb.setY(metres);
     }
 
     public abstract void enlairarse();

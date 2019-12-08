@@ -21,17 +21,43 @@ public class Print {
         System.out.println("" +
                 "CONTROLATOR 5000 ON\n" +
                 "\n" +
-                "1- Encendre/Apagar Motor.\n" +
-                "2- Accelerar/Frenar Avió.\n" +
-                "3- Pujar/Baixar Tren aterratge.\n" +
-                "4- Establir rumb.\n" +
-                "5- Info Avió.\n" +
+                "1- Encendre/Apagar Motor." +
+                "2- Accelerar Avió." +
+                "3- Frenar Avió.\n" +
+                "4- Pujar alçada." +
+                "5- Baixar alçada.\n" +
+                "6- Establir 'X' i 'Y'.\n" +
+                "7- Establir rumb.\n" +
+                "8- Pujar/Baixar Tren aterratge.\n" +
+                "9- Info Avió.\n" +
                 "0- Sortir.\n");
     }
 
+    public void printControladorAvioCombat() {
+        System.out.println("" +
+                "CONTROLATOR 5000 ON\n" +
+                "\n" +
+                "1- Encendre/Apagar Motor." +
+                "2- Accelerar Avió." +
+                "3- Frenar Avió.\n" +
+                "4- Pujar alçada." +
+                "5- Baixar alçada.\n" +
+                "6- Establir 'X' i 'Y'.\n" +
+                "7- Establir rumb.\n" +
+                "8- Pujar/Baixar Tren aterratge.\n" +
+                "9- Info Avió." +
+                "10- Acció preventiva (DEFCON 3).\n" +
+                "11- End Of Mission (DEFCON 5)\n" +
+                "0- Sortir.\n");
+    }
+
+    public void blocked() {
+        System.out.println("· B · L · O · C · K · E · D ·");
+    }
+
     public void printNoOpcioSwitch() {
-        System.out.println("Això no és una opció.");
-        System.out.println();
+        System.out.println("Això no és una opció.\n" +
+                "\n");
     }
 
     public void YareYareDaze() {
