@@ -1,11 +1,13 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Pilot {
 
     Print print = new Print();
     cLector teclat = new cLector();
 
-    public void controlAvio(Avio avio) {
+    public void controlAvio(Avio avio, ArrayList<Avio> avions) {
 
         int opcio;
         boolean deCombat = avio.getDeCombat();
@@ -23,39 +25,38 @@ public class Pilot {
                     avio = motor(avio);
                     break;
                 case 2:
-                case 3:
                     avio = velocitat(avio);
+                    break;
+                case 3:
+
                     break;
                 case 4:
 
                     break;
                 case 5:
-
+                    avio.moviment(200, avions);
                     break;
                 case 6:
 
                     break;
                 case 7:
-
-                    break;
-                case 8:
                     if (avio.getTrenAterratge()) {
                         avio.pujarTren();
                     } else {
                         avio.baixarTren();
                     }
                     break;
-                case 9:
+                case 8:
 
                     break;
-                case 10:
+                case 9:
                     if (deCombat) {
 
                     } else {
                         print.blocked();
                     }
                     break;
-                case 11:
+                case 10:
                     if (deCombat) {
 
                     } else {

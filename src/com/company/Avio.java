@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public abstract class Avio {
 
     private String matricula;
@@ -21,6 +23,8 @@ public abstract class Avio {
         this.posicioRumb = posicioRumb;
         this.deCombat = deCombat;
     }
+
+    /** GETTERS I SETTERS */
 
     public String getMatricula() {
         return matricula;
@@ -54,6 +58,10 @@ public abstract class Avio {
         return autonomia;
     }
 
+    /** METODES */
+
+    public abstract void enlairarse();
+
     public boolean getMotor() {
         return motor;
     }
@@ -82,9 +90,26 @@ public abstract class Avio {
         this.trenAterratge = false;
     }
 
-    public void alcada(int metres) {
-        posicioRumb.setY(metres);
+    public void alcada(int metres, ArrayList<Avio> avions) {
+
+        if (!controlCollisio(avions)) {
+            posicioRumb.setY(metres);
+        }
     }
 
-    public abstract void enlairarse();
+    public void moviment(int metres, ArrayList<Avio> avions) {
+
+        if (!controlCollisio(avions)) {
+            posicioRumb.setY(metres);
+        }
+    }
+
+    public boolean controlCollisio(ArrayList<Avio> avions) {
+
+        boolean collisio = false;
+
+
+
+        return collisio;
+    }
 }

@@ -21,15 +21,14 @@ public class Print {
         System.out.println("" +
                 "CONTROLATOR 5000 ON\n" +
                 "\n" +
-                "1- Encendre/Apagar Motor." +
-                "2- Accelerar Avió." +
-                "3- Frenar Avió.\n" +
-                "4- Pujar alçada." +
-                "5- Baixar alçada.\n" +
-                "6- Establir 'X' i 'Y'.\n" +
-                "7- Establir rumb.\n" +
-                "8- Pujar/Baixar Tren aterratge.\n" +
-                "9- Info Avió.\n" +
+                "1- Encendre/Apagar Motor.\n" +
+                "2- Accelerar/Frenar Avió.\n" +
+                "3- Pujar alçada.\n" +
+                "4- Baixar alçada.\n" +
+                "5- Establir 'X' i 'Y'.\n" +
+                "6- Establir rumb.\n" +
+                "7- Pujar/Baixar Tren aterratge.\n" +
+                "8- Info Avió.\n" +
                 "0- Sortir.\n");
     }
 
@@ -37,17 +36,16 @@ public class Print {
         System.out.println("" +
                 "CONTROLATOR 5000 ON\n" +
                 "\n" +
-                "1- Encendre/Apagar Motor." +
-                "2- Accelerar Avió." +
-                "3- Frenar Avió.\n" +
-                "4- Pujar alçada." +
-                "5- Baixar alçada.\n" +
-                "6- Establir 'X' i 'Y'.\n" +
-                "7- Establir rumb.\n" +
-                "8- Pujar/Baixar Tren aterratge.\n" +
-                "9- Info Avió." +
-                "10- Acció preventiva (DEFCON 3).\n" +
-                "11- End Of Mission (DEFCON 5)\n" +
+                "1- Encendre/Apagar Motor.\n" +
+                "2- Accelerar/Frenar Avió.\n" +
+                "3- Pujar alçada.\n" +
+                "4- Baixar alçada.\n" +
+                "5- Establir 'X' i 'Y'.\n" +
+                "6- Establir rumb.\n" +
+                "7- Pujar/Baixar Tren aterratge.\n" +
+                "8- Info Avió.\n" +
+                "9- Acció preventiva (DEFCON 3).\n" +
+                "10- End Of Mission (DEFCON 5)\n" +
                 "0- Sortir.\n");
     }
 

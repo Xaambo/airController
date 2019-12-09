@@ -247,7 +247,7 @@ public class ControladorAeri {
 
             avio = avions.get(posicio);
 
-            pilot.controlAvio(avio);
+            pilot.controlAvio(avio, avions);
         }
     }
 
