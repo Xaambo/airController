@@ -90,25 +90,71 @@ public abstract class Avio {
         this.trenAterratge = false;
     }
 
-    public void alcada(int metres, ArrayList<Avio> avions) {
+    public void alcada(Coordenada desti, ArrayList<Avio> avions) {
 
-        if (!controlCollisio(avions)) {
-            posicioRumb.setY(metres);
+        if (!controlCollisio(avions, desti)) {
+            posicioRumb.setY(desti.getY());
         }
     }
 
-    public void moviment(int metres, ArrayList<Avio> avions) {
+    public void moviment(Coordenada desti, ArrayList<Avio> avions) {
 
-        if (!controlCollisio(avions)) {
-            posicioRumb.setY(metres);
+        if (!controlCollisio(avions , desti)) {
+            posicioRumb = desti;
         }
     }
 
-    public boolean controlCollisio(ArrayList<Avio> avions) {
+    public boolean controlCollisio(ArrayList<Avio> avions, Coordenada desti) {
 
         boolean collisio = false;
 
+        int x = desti.getX();
+        int xBase;
+        int y = desti.getY();
+        int yBase;
+        int z = desti.getZ();
+        int zBase;
 
+        double distancia;
+        double distanciaTemp;
+
+        Coordenada coordAvioIterant = avions.get(0).getPosicioRumb();
+
+        xBase = coordAvioIterant.getX();
+        yBase = coordAvioIterant.getY();
+        zBase = coordAvioIterant.getZ();
+
+        distancia = Math.sqrt(Math.pow((xBase - x), 2) + Math.pow((yBase - y), 2) + Math.pow((zBase - z), 2));
+
+        for (int i = 0; i < avions.size(); i++) {
+
+            coordAvioIterant = avions.get(i).getPosicioRumb();
+
+            xBase = coordAvioIterant.getX();
+            yBase = coordAvioIterant.getY();
+            zBase = coordAvioIterant.getZ();
+
+            distanciaTemp = Math.sqrt(Math.pow((xBase - x), 2) + Math.pow((yBase - y), 2) + Math.pow((zBase - z), 2));
+
+            if (distanciaTemp < distancia) {
+                distancia = distanciaTemp;
+            }
+        }
+
+        /*for (xBase = (x-1); (xBase <= (x+1)) && !collisio; xBase++) {
+            for (yBase = (y-1); (yBase <= (y+1)) && !collisio; yBase++) {
+                for (zBase = (z-1); (zBase <= (z+1)) && !collisio; zBase++) {
+                    for (int i = 0; (i < avions.size()) && !collisio; i++) {
+
+                        Coordenada coordAvioIterant = avions.get(i).getPosicioRumb();
+
+                        if (coordAvioIterant.getX() == xBase && coordAvioIterant.getY() == yBase && coordAvioIterant.getZ() == zBase) {
+                            collisio = true;
+                        }
+                    }
+                }
+            }
+        }*/
 
         return collisio;
     }
