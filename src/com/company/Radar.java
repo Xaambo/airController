@@ -20,18 +20,18 @@ public class Radar {
 
     protected boolean pistaEstaLliure(boolean pistaLliure) {
 
-        pistaLliure = false;
-
-        for (int i = 0; i < avions.size() && !pistaLliure; i++) {
-            if (avions.get(i).getPosicioRumb().getX() == 100 && (avions.get(i).getPosicioRumb().getY() >= 100 || avions.get(i).getPosicioRumb().getY() <= 120)) {
-                pistaLliure = true;
-            }
-        }
+        pistaLliure = true;
 
         if (avions.size() == 0) {
             return true;
-        } else {
-            return pistaLliure;
         }
+
+        for (int i = 0; i < avions.size() && pistaLliure; i++) {
+            if (avions.get(i).getPosicioRumb().getX() == 100 && (avions.get(i).getPosicioRumb().getY() >= 100 || avions.get(i).getPosicioRumb().getY() <= 120)) {
+                pistaLliure = false;
+            }
+        }
+
+        return pistaLliure;
     }
 }

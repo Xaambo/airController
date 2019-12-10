@@ -14,6 +14,15 @@ public class Coordenada  {
     private int z;
     private String direccio;
 
+    public Coordenada(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public Coordenada() {
+    }
+
     public int getX() {
         return x;
     }

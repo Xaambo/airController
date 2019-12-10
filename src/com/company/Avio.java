@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public abstract class Avio {
 
+    Print print = new Print();
+
     private String matricula;
     private String marca;
     private String model;
@@ -101,6 +103,8 @@ public abstract class Avio {
 
         if (!controlCollisio(avions , desti)) {
             posicioRumb = desti;
+        } else {
+            print.errorPilot();
         }
     }
 
@@ -119,6 +123,7 @@ public abstract class Avio {
         double distanciaTemp;
 
         Coordenada coordAvioIterant = avions.get(0).getPosicioRumb();
+        Coordenada coordAvioMesProper = new Coordenada();
 
         xBase = coordAvioIterant.getX();
         yBase = coordAvioIterant.getY();
@@ -136,25 +141,22 @@ public abstract class Avio {
 
             distanciaTemp = Math.sqrt(Math.pow((xBase - x), 2) + Math.pow((yBase - y), 2) + Math.pow((zBase - z), 2));
 
-            if (distanciaTemp < distancia) {
+            if (distanciaTemp <= distancia) {
                 distancia = distanciaTemp;
+                coordAvioMesProper = coordAvioIterant;
             }
         }
 
-        /*for (xBase = (x-1); (xBase <= (x+1)) && !collisio; xBase++) {
+        for (xBase = (x-1); (xBase <= (x+1)) && !collisio; xBase++) {
             for (yBase = (y-1); (yBase <= (y+1)) && !collisio; yBase++) {
                 for (zBase = (z-1); (zBase <= (z+1)) && !collisio; zBase++) {
-                    for (int i = 0; (i < avions.size()) && !collisio; i++) {
 
-                        Coordenada coordAvioIterant = avions.get(i).getPosicioRumb();
-
-                        if (coordAvioIterant.getX() == xBase && coordAvioIterant.getY() == yBase && coordAvioIterant.getZ() == zBase) {
-                            collisio = true;
-                        }
+                    if (coordAvioMesProper.getX() == xBase && coordAvioMesProper.getY() == yBase && coordAvioMesProper.getZ() == zBase) {
+                        collisio = true;
                     }
                 }
             }
-        }*/
+        }
 
         return collisio;
     }

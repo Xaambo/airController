@@ -34,7 +34,7 @@ public class Pilot {
 
                     break;
                 case 5:
-                    avio.moviment(200, avions);
+                    avio.moviment(new Coordenada(200,200,200), avions);
                     break;
                 case 6:
 
