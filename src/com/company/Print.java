@@ -23,12 +23,11 @@ public class Print {
                 "\n" +
                 "1- Encendre/Apagar Motor.\n" +
                 "2- Accelerar/Frenar Avió.\n" +
-                "3- Pujar alçada.\n" +
-                "4- Baixar alçada.\n" +
-                "5- Establir 'X' i 'Y'.\n" +
-                "6- Establir rumb.\n" +
-                "7- Pujar/Baixar Tren aterratge.\n" +
-                "8- Info Avió.\n" +
+                "3- Pujar/Baixar alçada.\n" +
+                "4- Establir 'X' i 'Y'.\n" +
+                "5- Establir rumb.\n" +
+                "6- Pujar/Baixar Tren aterratge.\n" +
+                "7- Info Avió.\n" +
                 "0- Sortir.\n");
     }
 
@@ -38,14 +37,13 @@ public class Print {
                 "\n" +
                 "1- Encendre/Apagar Motor.\n" +
                 "2- Accelerar/Frenar Avió.\n" +
-                "3- Pujar alçada.\n" +
-                "4- Baixar alçada.\n" +
-                "5- Establir 'X' i 'Y'.\n" +
-                "6- Establir rumb.\n" +
-                "7- Pujar/Baixar Tren aterratge.\n" +
-                "8- Info Avió.\n" +
-                "9- Acció preventiva (DEFCON 3).\n" +
-                "10- End Of Mission (DEFCON 5)\n" +
+                "3- Pujar/Baixar alçada.\n" +
+                "4- Establir 'X' i 'Y'.\n" +
+                "5- Establir rumb.\n" +
+                "6- Pujar/Baixar Tren aterratge.\n" +
+                "7- Info Avió.\n" +
+                "8- Acció preventiva (DEFCON 3).\n" +
+                "9- End Of Mission (DEFCON 5)\n" +
                 "0- Sortir.\n");
     }
 
@@ -78,7 +76,6 @@ public class Print {
         System.out.println("" +
                 "CREACIÓ D'UN AVIÓ COMERCIAL\n" +
                 "===========================\n" +
-                "\n" +
                 "Per crear-lo necessitem que s'omplenin les dades que es demanen a continuació.\n" +
                 "\n");
     }
@@ -87,7 +84,6 @@ public class Print {
         System.out.println("" +
                 "ERROR\n" +
                 "=====\n" +
-                "\n" +
                 "Ja hi ha un avió a la pista, fins que aquest no s'enlairi no se'n pot col·locar un de nou." +
                 "\n");
     }
@@ -96,7 +92,6 @@ public class Print {
         System.out.println("" +
                 "ERROR\n" +
                 "=====\n" +
-                "\n" +
                 "La matrícula ha de tenir 7 caràcters obligatoriament.\n" +
                 "\n");
     }
@@ -105,7 +100,6 @@ public class Print {
         System.out.println("" +
                 "ERROR\n" +
                 "=====\n" +
-                "\n" +
                 "L'avió ha d'estar dintre la pista.\n" +
                 "\n");
     }
@@ -114,7 +108,6 @@ public class Print {
         System.out.println("" +
                 "ERROR\n" +
                 "=====\n" +
-                "\n" +
                 "S'ha arribat a la capacitat màxima d'avions que es poden control·lar.\n" +
                 "\n");
     }
@@ -127,7 +120,6 @@ public class Print {
         System.out.println("" +
                 "ERROR\n" +
                 "=====\n" +
-                "\n" +
                 "No pots fer això, sería catastròfic.\n" +
                 "\n");
     }
@@ -155,7 +147,6 @@ public class Print {
         System.out.println("" +
                 "ERROR\n" +
                 "=====\n" +
-                "\n" +
                 "No hi ha avions creats\n" +
                 "\n");
     }
@@ -188,5 +179,4 @@ public class Print {
                 "3- A-T\n" +
                 "0- Sortir\n");
     }
-
 }

@@ -28,35 +28,32 @@ public class Pilot {
                     avio = velocitat(avio);
                     break;
                 case 3:
-
+                    avio.alcada(new Coordenada(), avions);
                     break;
                 case 4:
-
+                    avio.moviment(new Coordenada(), avions);
                     break;
                 case 5:
-                    avio.moviment(new Coordenada(200,200,200), avions);
-                    break;
-                case 6:
 
                     break;
-                case 7:
+                case 6:
                     if (avio.getTrenAterratge()) {
                         avio.pujarTren();
                     } else {
                         avio.baixarTren();
                     }
                     break;
-                case 8:
+                case 7:
 
                     break;
-                case 9:
+                case 8:
                     if (deCombat) {
 
                     } else {
                         print.blocked();
                     }
                     break;
-                case 10:
+                case 9:
                     if (deCombat) {
 
                     } else {

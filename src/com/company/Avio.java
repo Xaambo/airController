@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public abstract class Avio {
 
     Print print = new Print();
+    cLector teclat = new cLector();
+
+    private static int DISTANCIASEGURETAT = 15;
 
     private String matricula;
     private String marca;
@@ -94,12 +97,23 @@ public abstract class Avio {
 
     public void alcada(Coordenada desti, ArrayList<Avio> avions) {
 
+        desti.setX(posicioRumb.getX());
+        desti.setY(posicioRumb.getY());
+        desti.setZ(200);
+
         if (!controlCollisio(avions, desti)) {
-            posicioRumb.setY(desti.getY());
+            posicioRumb.setZ(desti.getZ());
         }
     }
 
     public void moviment(Coordenada desti, ArrayList<Avio> avions) {
+
+        int x = teclat.llegirEnter("On vols anar?(X) ");
+        int y = teclat.llegirEnter("On vols anar?(Y) ");
+
+        desti.setX(x);
+        desti.setY(y);
+        desti.setZ(posicioRumb.getZ());
 
         if (!controlCollisio(avions , desti)) {
             posicioRumb = desti;
@@ -132,22 +146,27 @@ public abstract class Avio {
         distancia = Math.sqrt(Math.pow((xBase - x), 2) + Math.pow((yBase - y), 2) + Math.pow((zBase - z), 2));
 
         for (int i = 0; i < avions.size(); i++) {
+            if (avions.get(i) != this) {
+                coordAvioIterant = avions.get(i).getPosicioRumb();
 
-            coordAvioIterant = avions.get(i).getPosicioRumb();
+                xBase = coordAvioIterant.getX();
+                yBase = coordAvioIterant.getY();
+                zBase = coordAvioIterant.getZ();
 
-            xBase = coordAvioIterant.getX();
-            yBase = coordAvioIterant.getY();
-            zBase = coordAvioIterant.getZ();
+                distanciaTemp = Math.sqrt(Math.pow((xBase - x), 2) + Math.pow((yBase - y), 2) + Math.pow((zBase - z), 2));
 
-            distanciaTemp = Math.sqrt(Math.pow((xBase - x), 2) + Math.pow((yBase - y), 2) + Math.pow((zBase - z), 2));
-
-            if (distanciaTemp <= distancia) {
-                distancia = distanciaTemp;
-                coordAvioMesProper = coordAvioIterant;
+                if (distanciaTemp <= distancia) {
+                    distancia = distanciaTemp;
+                    /*coordAvioMesProper = coordAvioIterant;*/
+                }
             }
         }
 
-        for (xBase = (x-1); (xBase <= (x+1)) && !collisio; xBase++) {
+        if (distancia < DISTANCIASEGURETAT) {
+            collisio = true;
+        }
+
+        /*for (xBase = (x-1); (xBase <= (x+1)) && !collisio; xBase++) {
             for (yBase = (y-1); (yBase <= (y+1)) && !collisio; yBase++) {
                 for (zBase = (z-1); (zBase <= (z+1)) && !collisio; zBase++) {
 
@@ -156,7 +175,7 @@ public abstract class Avio {
                     }
                 }
             }
-        }
+        }*/
 
         return collisio;
     }
