@@ -137,7 +137,6 @@ public abstract class Avio {
         double distanciaTemp;
 
         Coordenada coordAvioIterant = avions.get(0).getPosicioRumb();
-        Coordenada coordAvioMesProper = new Coordenada();
 
         xBase = coordAvioIterant.getX();
         yBase = coordAvioIterant.getY();
@@ -157,7 +156,6 @@ public abstract class Avio {
 
                 if (distanciaTemp <= distancia) {
                     distancia = distanciaTemp;
-                    /*coordAvioMesProper = coordAvioIterant;*/
                 }
             }
         }
@@ -169,7 +167,6 @@ public abstract class Avio {
         /*for (xBase = (x-1); (xBase <= (x+1)) && !collisio; xBase++) {
             for (yBase = (y-1); (yBase <= (y+1)) && !collisio; yBase++) {
                 for (zBase = (z-1); (zBase <= (z+1)) && !collisio; zBase++) {
-
                     if (coordAvioMesProper.getX() == xBase && coordAvioMesProper.getY() == yBase && coordAvioMesProper.getZ() == zBase) {
                         collisio = true;
                     }
