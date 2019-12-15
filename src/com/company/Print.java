@@ -72,6 +72,24 @@ public class Print {
                 "0- Sortir\n");
     }
 
+    public void gestioMotor(boolean motor) {
+
+        String estat;
+
+        if (motor) {
+            estat = "encès";
+        } else {
+            estat = "apagat";
+        }
+
+        System.out.print("" +
+                "GESTIÓ MOTOR\n" +
+                "================\n" +
+                "1- Encendre\n" +
+                "2- Apagar\n" +
+                "Tens el motor " + estat + " què vols fer? ");
+    }
+
     public void creacioAvioComercial() {
         System.out.println("" +
                 "CREACIÓ D'UN AVIÓ COMERCIAL\n" +
@@ -148,6 +166,32 @@ public class Print {
                 "ERROR\n" +
                 "=====\n" +
                 "No hi ha avions creats\n" +
+                "\n");
+    }
+
+    public void noMotor() {
+        System.out.println("" +
+                "ERROR\n" +
+                "=====\n" +
+                "Motors apagats\n" +
+                "\n");
+    }
+
+    public void motorEnces() {
+        System.out.println("" +
+                "\n" +
+                "=============================\n" +
+                "Motor encès satifactoriament!\n" +
+                "=============================" +
+                "\n");
+    }
+
+    public void motorApagat() {
+        System.out.println("" +
+                "\n" +
+                "==============================\n" +
+                "Motor apagat satifactoriament!\n" +
+                "==============================" +
                 "\n");
     }
 

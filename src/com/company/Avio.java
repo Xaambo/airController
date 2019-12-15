@@ -95,15 +95,16 @@ public abstract class Avio {
         this.trenAterratge = false;
     }
 
-    public void alcada(Coordenada desti, ArrayList<Avio> avions) {
+    public Avio alcada(Coordenada desti, ArrayList<Avio> avions) {
 
         desti.setX(posicioRumb.getX());
         desti.setY(posicioRumb.getY());
-        desti.setZ(200);
 
         if (!controlCollisio(avions, desti)) {
             posicioRumb.setZ(desti.getZ());
         }
+
+        return this;
     }
 
     public void moviment(Coordenada desti, ArrayList<Avio> avions) {

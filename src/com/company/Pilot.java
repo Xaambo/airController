@@ -28,10 +28,10 @@ public class Pilot {
                     avio = velocitat(avio);
                     break;
                 case 3:
-                    avio.alcada(new Coordenada(), avions);
+                    avio = alcada(avio, new Coordenada(), avions);
                     break;
                 case 4:
-                    avio.moviment(new Coordenada(), avions);
+                    avio = moviment(avio, new Coordenada(), avions);
                     break;
                 case 5:
 
@@ -78,14 +78,22 @@ public class Pilot {
 
     public Avio motor(Avio avio) {
 
-        if (avio.getMotor()) {
+        boolean motor = avio.getMotor();
+
+        print.gestioMotor(motor);
+
+        if (teclat.llegirEnter() == 2) {
+
             if (avio.getVelocitat() > 0) {
                 print.errorPilot();
             } else {
                 avio.apagarMotor();
+                print.motorApagat();
             }
+
         } else {
             avio.encendreMotor();
+            print.motorEnces();
         }
 
         return avio;
@@ -95,20 +103,52 @@ public class Pilot {
 
         int novaVelocitat;
 
-        novaVelocitat = teclat.llegirEnter("Velocitat desitjada?");
+        if (avio.getMotor()) {
 
-        while (novaVelocitat < 0) {
             novaVelocitat = teclat.llegirEnter("Velocitat desitjada?");
-        }
 
-        if (novaVelocitat == 0) {
-            if (avio.getPosicioRumb().getY() > 0) {
-                print.errorPilot();
+            while (novaVelocitat < 0) {
+                novaVelocitat = teclat.llegirEnter("Velocitat desitjada?");
+            }
+
+            if (novaVelocitat == 0) {
+                if (avio.getPosicioRumb().getZ() > 0) {
+                    print.errorPilot();
+                } else {
+                    avio.setVelocitat(novaVelocitat);
+                }
             } else {
                 avio.setVelocitat(novaVelocitat);
             }
         } else {
-            avio.setVelocitat(novaVelocitat);
+            print.noMotor();
+            motor(avio);
+        }
+
+        return avio;
+    }
+
+    public Avio alcada(Avio avio, Coordenada desti, ArrayList<Avio> avions) {
+        
+        int zNew = teclat.llegirEnter();
+
+        if (avio.getTrenAterratge() && zNew > 500) {
+            print.errorPilot();
+        } else {
+            desti.setZ(zNew);
+            avio = avio.alcada(desti, avions);
+        }
+
+        return avio;
+    }
+
+    public Avio moviment(Avio avio, Coordenada desti, ArrayList<Avio> avions) {
+
+        if (avio.getMotor()) {
+            avio.moviment(desti, avions);
+        } else {
+            print.noMotor();
+            avio = motor(avio);
         }
 
         return avio;
