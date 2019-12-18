@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ControladorAeri {
@@ -140,7 +141,7 @@ public class ControladorAeri {
             if (avio == 1) {
                 maxPassatgers = avioComercial();
             } else {
-                misils = avioCombat();
+                misils = avioCombat(misils);
             }
 
             dadesInt = teclat.llegirEnter("Coordenada X? ");
@@ -197,37 +198,41 @@ public class ControladorAeri {
         return maxPassatgers;
     }
 
-    private ArrayList<Misil> avioCombat() {
+    private ArrayList<Misil> avioCombat(ArrayList<Misil> misils) {
 
-        ArrayList<Misil> misils = new ArrayList<>();
         int opcio;
+        boolean escollit = false;
 
         print.printMisils();
 
-        opcio = teclat.llegirEnter("Quina classe de mísils vols equipar?");
+        opcio = teclat.llegirEnter("Quina classe de mísils vols equipar? ");
 
-        while (opcio != 0) {
+        while (opcio != 0 && !escollit) {
             switch (opcio) {
                 case 1:
                     for (int i = 0; i < 10; i++) {
                         misils.add(new Misil("A-A Llarga distància", 100, 5, 150, 10));
+                        escollit = true;
                     }
                     break;
                 case 2:
                     for (int i = 0; i < 10; i++) {
                         misils.add(new Misil("A-A Curta distància", 80, 3, 85, 4));
+                        escollit = true;
                     }
                     break;
                 case 3:
                     for (int i = 0; i < 10; i++) {
                         misils.add(new Misil("A-T", 150, 10, 100, 10));
+                        escollit = true;
                     }
                     break;
                 default:
                     print.printNoOpcioSwitch();
+
+                    print.creacioAvio();
+                    opcio = teclat.llegirEnter("Quina classe de mísils vols equipar? ");
             }
-            print.creacioAvio();
-            opcio = teclat.llegirEnter("Quina classe de mísils vols equipar? ");
         }
 
         return misils;
@@ -259,7 +264,7 @@ public class ControladorAeri {
         criptologia.xifrar(avio);
     }
 
-    public void desxifrarAvions(Avio avio) {
+    public void desxifrarAvions(Avio avio) throws IOException {
         criptologia.desXifrar(avio);
     }
 }

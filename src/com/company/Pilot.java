@@ -134,6 +134,8 @@ public class Pilot {
 
         if (avio.getTrenAterratge() && zNew > 500) {
             print.errorPilot();
+        } else if (zNew <= 0 && avio.getPosicioRumb().getX() == 100 && (avio.getPosicioRumb().getY() >= 100 || avio.getPosicioRumb().getY() <= 120)) {
+            print.errorPilot();
         } else {
             desti.setZ(zNew);
             avio = avio.alcada(desti, avions);

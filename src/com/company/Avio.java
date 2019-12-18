@@ -63,10 +63,6 @@ public abstract class Avio {
         return autonomia;
     }
 
-    /** METODES */
-
-    public abstract void enlairarse();
-
     public boolean getMotor() {
         return motor;
     }
@@ -78,6 +74,10 @@ public abstract class Avio {
     public boolean getTrenAterratge() {
         return trenAterratge;
     }
+
+    /** METODES */
+
+    public abstract void enlairarse();
 
     public void encendreMotor() {
         this.motor = true;
