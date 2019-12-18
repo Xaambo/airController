@@ -1,7 +1,62 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.jar.JarOutputStream;
+
+enum Filtre {
+    
+    noXIFRATS {
+        @Override
+        ArrayList<Avio> filtrar(ArrayList<Avio> avions, ArrayList<Avio> avionsFiltrats) {
+
+            for (int i = 0; i < avions.size(); i++) {
+
+                Avio avio = avions.get(i);
+
+                if (avio != null && !avio.isXifrat()) {
+                    avionsFiltrats.add(avio);
+                }
+            }
+
+            return avionsFiltrats;
+        }
+    },
+
+    XIFRATS {
+        @Override
+        ArrayList<Avio> filtrar(ArrayList<Avio> avions, ArrayList<Avio> avionsFiltrats) {
+
+            for (int i = 0; i < avions.size(); i++) {
+
+                Avio avio = avions.get(i);
+
+                if (avio != null && avio.isXifrat()) {
+                    avionsFiltrats.add(avio);
+                }
+            }
+
+            return avionsFiltrats;
+        }
+    },
+
+    deCOMBAT {
+        @Override
+        ArrayList<Avio> filtrar(ArrayList<Avio> avions, ArrayList<Avio> avionsFiltrats) {
+
+            for (int i = 0; i < avions.size(); i++) {
+
+                Avio avio = avions.get(i);
+
+                if (avio != null && !avio.getDeCombat()) {
+                    avionsFiltrats.add(avio);
+                }
+            }
+
+            return null;
+        }
+    };
+
+    abstract ArrayList<Avio> filtrar(ArrayList<Avio> avions, ArrayList<Avio> avionsFiltrats);
+}
 
 public class Print {
 
@@ -98,6 +153,14 @@ public class Print {
                 "\n");
     }
 
+    public void fitxerNoTrobat() {
+        System.out.println("" +
+                "ERROR\n" +
+                "=====\n" +
+                "El fitxer no ha estat trobat.\n" +
+                "\n");
+    }
+
     public void pistaNoLliure() {
         System.out.println("" +
                 "ERROR\n" +
@@ -142,19 +205,26 @@ public class Print {
                 "\n");
     }
 
-    public boolean llistaAvions(ArrayList<Avio> avions) {
+    public boolean llistaAvions(ArrayList<Avio> avions, Filtre filtre) {
 
         boolean algunAvio = false;
+        ArrayList<Avio> avionsFiltre = new ArrayList<>();
 
-        for (int i = 0; i < avions.size(); i++) {
-            if (avions.get(i) != null) {
-                System.out.println("- Matrícula: " + avions.get(i).getMatricula() + " | Marca: " + avions.get(i).getMarca() + " | Model: " + avions.get(i).getModel());
-                algunAvio = true;
+        if (avions.size() > 0) {
+
+            algunAvio = true;
+
+            avionsFiltre = filtre.filtrar(avions, avionsFiltre);
+
+            for (int i = 0; i < avionsFiltre.size(); i++) {
+
+                Avio avio = avionsFiltre.get(i);
+                
+                System.out.println("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
             }
-        }
-        liniaBlanca();
+            liniaBlanca();
 
-        if (!algunAvio) {
+        } else {
             noAvions();
         }
 

@@ -19,6 +19,7 @@ public abstract class Avio {
     private boolean motor = false;
     private boolean trenAterratge = true;
     private boolean deCombat;
+    private boolean xifrat = false;
 
     public Avio(String matricula, String marca, String model, int tripulacio, Coordenada posicioRumb, boolean deCombat) {
         this.matricula = matricula;
@@ -39,8 +40,16 @@ public abstract class Avio {
         return marca;
     }
 
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
     public String getModel() {
         return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getTripulacio() {
@@ -73,6 +82,14 @@ public abstract class Avio {
 
     public boolean getTrenAterratge() {
         return trenAterratge;
+    }
+
+    public boolean isXifrat() {
+        return xifrat;
+    }
+
+    public void setXifrat(boolean xifrat) {
+        this.xifrat = xifrat;
     }
 
     /** METODES */

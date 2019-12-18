@@ -12,7 +12,7 @@ public class ControladorAeri {
     Logic logic = new Logic();
     Pilot pilot = new Pilot();
 
-    public void controlAeri() {
+    public void controlAeri() throws IOException {
 
         int opcio;
         boolean pistaLliure = false;
@@ -37,8 +37,10 @@ public class ControladorAeri {
                 case 3:
                     break;
                 case 4:
+                    xifrarAvions();
                     break;
                 case 5:
+                    desxifrarAvions();
                     break;
                 default:
                     print.printNoOpcioSwitch();
@@ -81,7 +83,7 @@ public class ControladorAeri {
         }
     }
 
-    private void eliminarAvio() {
+    /*private void eliminarAvio() {
 
         ArrayList<Avio> avions = radar.getAvions();
         int posicio;
@@ -96,7 +98,7 @@ public class ControladorAeri {
 
             print.avioEliminat();
         }
-    }
+    }*/
 
     private ArrayList<Avio> avio(int avio, ArrayList<Avio> avions) {
 
@@ -245,7 +247,7 @@ public class ControladorAeri {
         int posicio;
         boolean algunAvio;
 
-        algunAvio = print.llistaAvions(avions);
+        algunAvio = print.llistaAvions(avions, Filtre.noXIFRATS);
 
         if (algunAvio) {
             posicio = logic.trobar(avions);
@@ -260,11 +262,39 @@ public class ControladorAeri {
         radar.resumSituacio();
     }
 
-    public void xifrarAvions(Avio avio) {
-        criptologia.xifrar(avio);
+    public void xifrarAvions() {
+
+        ArrayList<Avio> avions = radar.getAvions();
+        Avio avio;
+        int posicio;
+        boolean algunAvio;
+
+        algunAvio = print.llistaAvions(avions, Filtre.noXIFRATS);
+
+        if (algunAvio) {
+            posicio = logic.trobar(avions);
+
+            avio = avions.get(posicio);
+
+            criptologia.xifrar(avio);
+        }
     }
 
-    public void desxifrarAvions(Avio avio) throws IOException {
-        criptologia.desXifrar(avio);
+    public void desxifrarAvions() throws IOException {
+
+        ArrayList<Avio> avions = radar.getAvions();
+        Avio avio;
+        int posicio;
+        boolean algunAvio;
+
+        algunAvio = print.llistaAvions(avions, Filtre.XIFRATS);
+
+        if (algunAvio) {
+            posicio = logic.trobar(avions);
+
+            avio = avions.get(posicio);
+
+            criptologia.desXifrar(avio);
+        }
     }
 }
