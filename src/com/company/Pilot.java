@@ -130,7 +130,7 @@ public class Pilot {
 
     public Avio alcada(Avio avio, Coordenada desti, ArrayList<Avio> avions) {
         
-        int zNew = teclat.llegirEnter();
+        int zNew = teclat.llegirEnter("A quina alçada vols anar? ");
 
         if (avio.getTrenAterratge() && zNew > 500) {
             print.errorPilot();

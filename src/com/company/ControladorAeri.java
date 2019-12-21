@@ -1,6 +1,5 @@
 package com.company;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class ControladorAeri {
@@ -12,7 +11,7 @@ public class ControladorAeri {
     Logic logic = new Logic();
     Pilot pilot = new Pilot();
 
-    public void controlAeri() throws IOException {
+    public void controlAeri() {
 
         int opcio;
         boolean pistaLliure = false;
@@ -146,35 +145,10 @@ public class ControladorAeri {
                 misils = avioCombat(misils);
             }
 
-            dadesInt = teclat.llegirEnter("Coordenada X? ");
-
-            correcte = false;
-
-            while (!correcte) {
-                if (dadesInt != 100) {
-                    print.avioForaPista();
-                    dadesInt = teclat.llegirEnter("Coordenada X? ");
-                } else {
-                    posicioRumb.setX(dadesInt);
-                    correcte = true;
-                }
-            }
-
-            dadesInt = teclat.llegirEnter("Coordenada Y? ");
-
-            correcte = false;
-
-            while (!correcte) {
-                if (dadesInt < 100 || dadesInt > 120) {
-                    print.avioForaPista();
-                    dadesInt = teclat.llegirEnter("Coordenada Y? ");
-                } else {
-                    posicioRumb.setY(dadesInt);
-                    posicioRumb.setZ(0);
-                    posicioRumb.setDireccio(Direccio.AVALL);
-                    correcte = true;
-                }
-            }
+            posicioRumb.setX(100);
+            posicioRumb.setY(100);
+            posicioRumb.setZ(0);
+            posicioRumb.setDireccio(Direccio.AVALL);
 
             if (avio == 1) {
                 avions.add(/*avions.lastIndexOf(null),*/ new AvioComercial(matricula, marca, model, tripulacio, posicioRumb, maxPassatgers, false));
@@ -243,16 +217,16 @@ public class ControladorAeri {
     private void gestionarAvions() {
 
         ArrayList<Avio> avions = radar.getAvions();
+        ArrayList<Avio> avionsFiltre;
         Avio avio;
         int posicio;
-        boolean algunAvio;
 
-        algunAvio = print.llistaAvions(avions, Filtre.noXIFRATS);
+        avionsFiltre = print.llistaAvions(avions, Filtre.noXIFRATS);
 
-        if (algunAvio) {
-            posicio = logic.trobar(avions);
+        if (avionsFiltre.size() > 0) {
+            posicio = logic.trobar(avionsFiltre);
 
-            avio = avions.get(posicio);
+            avio = avionsFiltre.get(posicio);
 
             pilot.controlAvio(avio, avions);
         }
@@ -265,36 +239,36 @@ public class ControladorAeri {
     public void xifrarAvions() {
 
         ArrayList<Avio> avions = radar.getAvions();
+        ArrayList<Avio> avionsFiltre;
         Avio avio;
         int posicio;
-        boolean algunAvio;
 
-        algunAvio = print.llistaAvions(avions, Filtre.noXIFRATS);
+        avionsFiltre = print.llistaAvions(avions, Filtre.noXIFRATS);
 
-        if (algunAvio) {
-            posicio = logic.trobar(avions);
+        if (avionsFiltre.size() > 0) {
+            posicio = logic.trobar(avionsFiltre);
 
-            avio = avions.get(posicio);
+            avio = avionsFiltre.get(posicio);
 
             criptologia.xifrar(avio);
         }
     }
 
-    public void desxifrarAvions() throws IOException {
+    public void desxifrarAvions() {
 
         ArrayList<Avio> avions = radar.getAvions();
+        ArrayList<Avio> avionsFiltre;
         Avio avio;
         int posicio;
-        boolean algunAvio;
 
-        algunAvio = print.llistaAvions(avions, Filtre.XIFRATS);
+        avionsFiltre = print.llistaAvions(avions, Filtre.XIFRATS);
 
-        if (algunAvio) {
-            posicio = logic.trobar(avions);
+        if (avionsFiltre.size() > 0) {
+            posicio = logic.trobar(avionsFiltre);
 
-            avio = avions.get(posicio);
+            avio = avionsFiltre.get(posicio);
 
-            criptologia.desXifrar(avio);
+            criptologia.xifrar(avio);
         }
     }
 }

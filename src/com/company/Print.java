@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 enum Filtre {
-    
+
     noXIFRATS {
         @Override
         ArrayList<Avio> filtrar(ArrayList<Avio> avions, ArrayList<Avio> avionsFiltrats) {
@@ -46,7 +46,7 @@ enum Filtre {
 
                 Avio avio = avions.get(i);
 
-                if (avio != null && !avio.getDeCombat()) {
+                if (avio != null && avio.getDeCombat()) {
                     avionsFiltrats.add(avio);
                 }
             }
@@ -205,7 +205,7 @@ public class Print {
                 "\n");
     }
 
-    public boolean llistaAvions(ArrayList<Avio> avions, Filtre filtre) {
+    public ArrayList<Avio> llistaAvions(ArrayList<Avio> avions, Filtre filtre) {
 
         boolean algunAvio = false;
         ArrayList<Avio> avionsFiltre = new ArrayList<>();
@@ -216,19 +216,24 @@ public class Print {
 
             avionsFiltre = filtre.filtrar(avions, avionsFiltre);
 
-            for (int i = 0; i < avionsFiltre.size(); i++) {
+            if (avionsFiltre.size() > 0) {
 
-                Avio avio = avionsFiltre.get(i);
-                
-                System.out.println("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
+                for (int i = 0; i < avionsFiltre.size(); i++) {
+
+                    Avio avio = avionsFiltre.get(i);
+
+                    System.out.println("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
+                }
+                liniaBlanca();
+            } else {
+                noAvions();
             }
-            liniaBlanca();
 
         } else {
             noAvions();
         }
 
-        return algunAvio;
+        return avionsFiltre;
     }
 
     public void noAvions() {
@@ -236,6 +241,14 @@ public class Print {
                 "ERROR\n" +
                 "=====\n" +
                 "No hi ha avions creats\n" +
+                "\n");
+    }
+
+    public void unknown() {
+        System.out.println("" +
+                "ERROR\n" +
+                "=====\n" +
+                "Error desconegut contacti amb l'adminstrador.\n" +
                 "\n");
     }
 

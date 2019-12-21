@@ -1,6 +1,8 @@
 package com.company;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,13 +21,11 @@ public class Criptologia {
 
         try {
             FileWriter fw = new FileWriter(arxiu, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw);
 
-            out.println(criptat);
+            fw.write(criptat);
 
         } catch (IOException e) {
-            //exception handling left as an exercise for the reader
+            print.unknown();
         }
 
         // mantenir la matricula igual pero hashear tot lo altre pero guardant la matricula en el hash
@@ -37,14 +37,15 @@ public class Criptologia {
         return avio;
     }
 
-    public Avio desXifrar(Avio avio) throws IOException {
+    public Avio desXifrar(Avio avio) {
 
         String comparacio;
         String hash = "";
+        String arxiu = avio.getMatricula() + ".hash";
 
         try {
-            hash = new String(Files.readAllBytes(Paths.get(avio.getMatricula() + ".hash")));
-        } catch (FileNotFoundException e) {
+            hash = new String(Files.readAllBytes(Paths.get(arxiu)));
+        } catch (Exception e) {
             print.fitxerNoTrobat();
         }
 
@@ -58,6 +59,10 @@ public class Criptologia {
             avio.setModel(new String(decodeModel, StandardCharsets.UTF_8));
 
             avio.setXifrat(false);
+
+            File file = new File(arxiu);
+
+            file.delete();
 
         } else {
 
