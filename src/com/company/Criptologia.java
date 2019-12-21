@@ -1,8 +1,6 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,10 +17,9 @@ public class Criptologia {
 
         criptat = Base64.getEncoder().encodeToString(avio.getMatricula().getBytes(StandardCharsets.UTF_8));
 
-        try {
-            FileWriter fw = new FileWriter(arxiu, true);
+        try (FileWriter fw = new FileWriter(arxiu, true); BufferedWriter bw = new BufferedWriter(fw); PrintWriter out = new PrintWriter(bw)) {
 
-            fw.write(criptat);
+            out.println(criptat);
 
         } catch (IOException e) {
             print.unknown();
@@ -30,7 +27,7 @@ public class Criptologia {
 
         // mantenir la matricula igual pero hashear tot lo altre pero guardant la matricula en el hash
 
-        avio.setMarca(Base64.getEncoder().encodeToString(avio.getMatricula().getBytes(StandardCharsets.UTF_8)));
+        avio.setMarca(Base64.getEncoder().encodeToString(avio.getMarca().getBytes(StandardCharsets.UTF_8)));
         avio.setModel(Base64.getEncoder().encodeToString(avio.getModel().getBytes(StandardCharsets.UTF_8)));
         avio.setXifrat(true);
 
@@ -45,6 +42,7 @@ public class Criptologia {
 
         try {
             hash = new String(Files.readAllBytes(Paths.get(arxiu)));
+            hash = hash.substring(0, hash.length() - 2);
         } catch (Exception e) {
             print.fitxerNoTrobat();
         }

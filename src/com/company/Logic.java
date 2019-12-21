@@ -6,28 +6,63 @@ public class Logic {
 
     cLector teclat = new cLector();
 
-    public int trobar(ArrayList<Avio> avions) {
+    private int posicio;
+    private boolean seleccionat;
+
+    public Logic() {
+
+    }
+
+    public Logic(int posicio, boolean seleccionat) {
+        this.posicio = posicio;
+        this.seleccionat = seleccionat;
+    }
+
+    /** GETTERS & SETTERS */
+
+    public int getPosicio() {
+        return posicio;
+    }
+
+    public void setPosicio(int posicio) {
+        this.posicio = posicio;
+    }
+
+    public boolean isSeleccionat() {
+        return seleccionat;
+    }
+
+    public void setSeleccionat(boolean seleccionat) {
+        this.seleccionat = seleccionat;
+    }
+
+    /** MÈTODES */
+
+    public Logic trobar(ArrayList<Avio> avions) {
 
         boolean seleccionat = false;
         String opcio;
         int posicio = 0;
+        Logic logic = new Logic(posicio, seleccionat);
 
         opcio = teclat.llegirString("Quin avió vols? (Matrícula) ");
 
-        while (!seleccionat) {
+        while (!seleccionat && !opcio.equals("0")) {
             for (int i = 0; i < avions.size() && !seleccionat; i++) {
                 if (opcio.equals(avions.get(i).getMatricula())) {
                     posicio = i;
                     seleccionat = true;
+
+                    logic.setPosicio(posicio);
+                    logic.setSeleccionat(seleccionat);
                 }
             }
             if (!seleccionat) {
-
                 opcio = teclat.llegirString("Quin avió vols? (Matrícula) ");
             }
 
         }
 
-        return posicio;
+        return logic;
     }
 }

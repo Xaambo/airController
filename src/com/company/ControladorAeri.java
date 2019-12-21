@@ -68,12 +68,13 @@ public class ControladorAeri {
                     case 2:
                         avio = opcio;
                         avio(avio, avions);
+                        opcio = 0;
                         break;
                     default:
                         print.printNoOpcioSwitch();
+
+                        opcio = teclat.llegirEnter("Quin vols crear? ");
                 }
-                print.creacioAvio();
-                opcio = teclat.llegirEnter("Quin vols crear? ");
             }
             print.YareYareDaze();
 
@@ -218,17 +219,26 @@ public class ControladorAeri {
 
         ArrayList<Avio> avions = radar.getAvions();
         ArrayList<Avio> avionsFiltre;
+        Logic logic;
         Avio avio;
         int posicio;
 
         avionsFiltre = print.llistaAvions(avions, Filtre.noXIFRATS);
 
         if (avionsFiltre.size() > 0) {
-            posicio = logic.trobar(avionsFiltre);
 
-            avio = avionsFiltre.get(posicio);
+            logic = this.logic.trobar(avionsFiltre);
 
-            pilot.controlAvio(avio, avions);
+            if (logic.isSeleccionat()) {
+
+                posicio = logic.getPosicio();
+
+                avio = avionsFiltre.get(posicio);
+
+                pilot.controlAvio(avio, avions);
+            }
+        } else {
+            print.YareYareDaze();
         }
     }
 
@@ -240,17 +250,25 @@ public class ControladorAeri {
 
         ArrayList<Avio> avions = radar.getAvions();
         ArrayList<Avio> avionsFiltre;
+        Logic logic;
         Avio avio;
         int posicio;
 
         avionsFiltre = print.llistaAvions(avions, Filtre.noXIFRATS);
 
         if (avionsFiltre.size() > 0) {
-            posicio = logic.trobar(avionsFiltre);
+            logic = this.logic.trobar(avionsFiltre);
 
-            avio = avionsFiltre.get(posicio);
+            if (logic.isSeleccionat()) {
 
-            criptologia.xifrar(avio);
+                posicio = logic.getPosicio();
+
+                avio = avionsFiltre.get(posicio);
+
+                criptologia.xifrar(avio);
+            } else {
+                print.YareYareDaze();
+            }
         }
     }
 
@@ -258,17 +276,25 @@ public class ControladorAeri {
 
         ArrayList<Avio> avions = radar.getAvions();
         ArrayList<Avio> avionsFiltre;
+        Logic logic;
         Avio avio;
         int posicio;
 
         avionsFiltre = print.llistaAvions(avions, Filtre.XIFRATS);
 
         if (avionsFiltre.size() > 0) {
-            posicio = logic.trobar(avionsFiltre);
+            logic = this.logic.trobar(avionsFiltre);
 
-            avio = avionsFiltre.get(posicio);
+            if (logic.isSeleccionat()) {
 
-            criptologia.xifrar(avio);
+                posicio = logic.getPosicio();
+
+                avio = avionsFiltre.get(posicio);
+
+                criptologia.desXifrar(avio);
+            } else {
+                print.YareYareDaze();
+            }
         }
     }
 }

@@ -151,6 +151,7 @@ public class Pilot {
         } else {
             print.noMotor();
             avio = motor(avio);
+            avio = moviment(avio, desti, avions);
         }
 
         return avio;
