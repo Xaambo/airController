@@ -62,8 +62,8 @@ public class Print {
 
     public void printControladorAeri() {
         System.out.print("" +
-                "CONTROLATOR 5000 ON\n" +
-                "\n" +
+                "\nCONTROLATOR 5000 ON\n" +
+                "===================\n" +
                 "1- Afegir un avió al espai aeri.\n" +
                 "2- Gestionar un dels avions que tenim al radar.\n" +
                 "3- Mostrar radar.\n" +
@@ -74,8 +74,8 @@ public class Print {
 
     public void printControladorAvio() {
         System.out.print("" +
-                "CONTROLATOR 5000 ON\n" +
-                "\n" +
+                "\nCONTROLATOR 5000 ON\n" +
+                "===================\n" +
                 "1- Encendre/Apagar Motor.\n" +
                 "2- Accelerar/Frenar Avió.\n" +
                 "3- Pujar/Baixar alçada.\n" +
@@ -88,8 +88,8 @@ public class Print {
 
     public void printControladorAvioCombat() {
         System.out.print("" +
-                "CONTROLATOR 5000 ON\n" +
-                "\n" +
+                "\nCONTROLATOR 5000 ON\n" +
+                "===================\n" +
                 "1- Encendre/Apagar Motor.\n" +
                 "2- Accelerar/Frenar Avió.\n" +
                 "3- Pujar/Baixar alçada.\n" +
@@ -112,12 +112,12 @@ public class Print {
     }
 
     public void YareYareDaze() {
-        System.out.print("Yare Yare Daze");
+        System.out.print("\nYare Yare Daze\n");
     }
 
     public void creacioAvio() {
         System.out.print("" +
-                "CREACIÓ D'AVIONS\n" +
+                "\nCREACIÓ D'AVIONS\n" +
                 "================\n" +
                 "Abans de procedir amb les dades s'hauria d'informar si es vol afegir un avió comercial o un de combat.\n" +
                 "\n" +
@@ -137,7 +137,7 @@ public class Print {
         }
 
         System.out.print("" +
-                "GESTIÓ MOTOR\n" +
+                "\nGESTIÓ MOTOR\n" +
                 "============\n" +
                 "1- Encendre\n" +
                 "2- Apagar\n" +
@@ -146,7 +146,7 @@ public class Print {
 
     public void creacioAvioComercial() {
         System.out.print("" +
-                "CREACIÓ D'UN AVIÓ COMERCIAL\n" +
+                "\nCREACIÓ D'UN AVIÓ COMERCIAL\n" +
                 "===========================\n" +
                 "Per crear-lo necessitem que s'omplenin les dades que es demanen a continuació.\n");
     }
@@ -191,8 +191,8 @@ public class Print {
     }
 
     public void errorPilot() {
-        System.out.print("" +
-                "\n\nERROR\n" +
+        System.out.println("" +
+                "\nERROR\n" +
                 "=====\n" +
                 "No pots fer això, sería catastròfic.");
     }
@@ -211,7 +211,7 @@ public class Print {
 
                     Avio avio = avionsFiltre.get(i);
 
-                    System.out.print("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
+                    System.out.println("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
                 }
                 liniaBlanca();
             } else {
@@ -223,6 +223,22 @@ public class Print {
         }
 
         return avionsFiltre;
+    }
+
+    public void infoAvio(Avio avio) {
+
+        Coordenada posicioRumb = avio.getPosicioRumb();
+
+        System.out.print("" +
+                "\nINFO AVIÓ " + avio.getMatricula().toUpperCase() + "\n" +
+                "- Matrícula:  " + avio.getMatricula() + "\n" +
+                "- Marca:      " + avio.getMarca() + "\n" +
+                "- Model:      " + avio.getModel() + "\n" +
+                "- Posició X:  " + posicioRumb.getX() + "\n" +
+                "- Posició Y:  " + posicioRumb.getY() + "\n" +
+                "- Posició Z:  " + posicioRumb.getZ() + "\n" +
+                "- Velocitat:  " + avio.getVelocitat() + "\n" +
+                "- Tripulació: " + avio.getTripulacio() + "\n");
     }
 
     public void noAvions() {
