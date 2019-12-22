@@ -23,6 +23,25 @@ public class cLector {
 		return llegirEnter();
 	}
 
+	public float llegirFloat(){
+
+		Scanner lector = new Scanner(System.in);
+		float correcte = 0;
+
+		while (!lector.hasNextFloat()){
+			lector.next();
+			System.out.print("No és un número vàlid. Introdueix un altre número: ");
+		}
+		correcte=lector.nextFloat();
+		lector.nextLine();
+		return correcte;
+	}
+
+	public float llegirFloat (String missatge){
+		System.out.print(missatge);
+		return llegirFloat();
+	}
+
 	public String llegirString (){
 		String frase = "";
 		Scanner lector = new Scanner(System.in);

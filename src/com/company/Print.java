@@ -260,6 +260,29 @@ public class Print {
                 "\n");
     }
 
+    public void volsEnlairar() {
+        System.out.println("" +
+                "WARNING\n" +
+                "=======\n" +
+                "Estas aterrat vols enlairar-te?\n" +
+                "1- Si\n" +
+                "2- No\n" +
+                "\n");
+    }
+
+    public void velocitatEnlairar() {
+        System.out.println("" +
+                "Per enlairarte has de pujar la velocitat a un mínim de 180.\n");
+    }
+
+    public void noMinimVel() {
+        System.out.println("" +
+                "ERROR\n" +
+                "=====\n" +
+                "La velocitat mínima és de 180\n" +
+                "\n");
+    }
+
     public void motorEnces() {
         System.out.println("" +
                 "\n" +

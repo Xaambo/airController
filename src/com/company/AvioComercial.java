@@ -25,9 +25,23 @@ public class AvioComercial extends Avio {
     }
 
     @Override
-    public void enlairarse() {
+    public Avio enlairarse(Avio avio) {
 
+        float velocitat;
 
+        print.velocitatEnlairar();
+        velocitat = teclat.llegirFloat("Velociat desitjada? ");
 
+        if (velocitat == 0) {
+            print.YareYareDaze();
+        } else if (velocitat < 180) {
+            print.noMinimVel();
+            avio = enlairarse(this);
+        } else {
+            avio.setVelocitat((int)velocitat);
+            avio.setPosicioRumb(new Coordenada(getPosicioRumb().getX(), 150, 200));
+        }
+
+        return avio;
     }
 }

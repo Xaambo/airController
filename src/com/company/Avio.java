@@ -60,6 +60,10 @@ public abstract class Avio {
         return posicioRumb;
     }
 
+    public void setPosicioRumb(Coordenada posicioRumb) {
+        this.posicioRumb = posicioRumb;
+    }
+
     public int getVelocitat() {
         return velocitat;
     }
@@ -94,7 +98,7 @@ public abstract class Avio {
 
     /** METODES */
 
-    public abstract void enlairarse();
+    public abstract Avio enlairarse(Avio avio);
 
     public void encendreMotor() {
         this.motor = true;

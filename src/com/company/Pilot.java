@@ -94,6 +94,13 @@ public class Pilot {
         } else {
             avio.encendreMotor();
             print.motorEnces();
+
+            if (avio.getPosicioRumb().getZ() == 0) {
+                print.volsEnlairar();
+                if (teclat.llegirEnter() == 1) {
+                    avio = avio.enlairarse(avio);
+                }
+            }
         }
 
         return avio;
