@@ -98,7 +98,7 @@ public abstract class Avio {
 
     /** METODES */
 
-    public abstract Avio enlairarse(Avio avio);
+    public abstract Avio enlairarse(Avio avio, ArrayList<Avio> avions);
 
     public void encendreMotor() {
         this.motor = true;

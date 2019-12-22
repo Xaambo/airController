@@ -1,6 +1,10 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class AvioComercial extends Avio {
+
+    Pilot pilot = new Pilot();
 
     private int maxPassatgers;
     private String origen = "Barcelona";
@@ -25,7 +29,7 @@ public class AvioComercial extends Avio {
     }
 
     @Override
-    public Avio enlairarse(Avio avio) {
+    public Avio enlairarse(Avio avio, ArrayList<Avio> avions) {
 
         float velocitat;
 
@@ -36,9 +40,9 @@ public class AvioComercial extends Avio {
             print.YareYareDaze();
         } else if (velocitat < 180) {
             print.noMinimVel();
-            avio = enlairarse(this);
+            avio = enlairarse(this, avions);
         } else {
-            avio.setVelocitat((int)velocitat);
+            avio.setVelocitat(pilot.velocitat(this, avions).getVelocitat());
             avio.setPosicioRumb(new Coordenada(getPosicioRumb().getX(), 150, 200));
         }
 

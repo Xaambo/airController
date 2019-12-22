@@ -22,10 +22,10 @@ public class Pilot {
         while (opcio != 0) {
             switch (opcio) {
                 case 1:
-                    avio = motor(avio);
+                    avio = motor(avio, avions);
                     break;
                 case 2:
-                    avio = velocitat(avio);
+                    avio = velocitat(avio, avions);
                     break;
                 case 3:
                     avio = alcada(avio, new Coordenada(), avions);
@@ -76,7 +76,7 @@ public class Pilot {
         print.YareYareDaze();
     }
 
-    public Avio motor(Avio avio) {
+    public Avio motor(Avio avio, ArrayList<Avio> avions) {
 
         boolean motor = avio.getMotor();
 
@@ -98,7 +98,7 @@ public class Pilot {
             if (avio.getPosicioRumb().getZ() == 0) {
                 print.volsEnlairar();
                 if (teclat.llegirEnter() == 1) {
-                    avio = avio.enlairarse(avio);
+                    avio = avio.enlairarse(avio, avions);
                 }
             }
         }
@@ -106,7 +106,7 @@ public class Pilot {
         return avio;
     }
 
-    public Avio velocitat(Avio avio) {
+    public Avio velocitat(Avio avio, ArrayList<Avio> avions) {
 
         int novaVelocitat;
 
@@ -129,7 +129,7 @@ public class Pilot {
             }
         } else {
             print.noMotor();
-            motor(avio);
+            motor(avio, avions);
         }
 
         return avio;
@@ -157,7 +157,7 @@ public class Pilot {
             avio.moviment(desti, avions);
         } else {
             print.noMotor();
-            avio = motor(avio);
+            avio = motor(avio, avions);
             avio = moviment(avio, desti, avions);
         }
 
