@@ -162,7 +162,7 @@ public class Print {
         System.out.print("" +
                 "\nERROR\n" +
                 "=====\n" +
-                "Ja hi ha un avió a la pista, fins que aquest no s'enlairi no se'n pot col·locar un de nou.");
+                "Ja hi ha un avió a la pista, fins que aquest no s'enlairi no se'n pot col·locar un de nou.\n");
     }
 
     public void matriculaErronia() {
