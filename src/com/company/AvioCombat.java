@@ -23,7 +23,8 @@ public class AvioCombat extends Avio {
     }
 
     @Override
-    public void enlairarse() {
+    public Avio enlairarse(Avio avio, ArrayList<Avio> avions) {
 
+        return avio;
     }
 }

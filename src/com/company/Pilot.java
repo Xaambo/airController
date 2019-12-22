@@ -6,6 +6,7 @@ public class Pilot {
 
     Print print = new Print();
     cLector teclat = new cLector();
+    Logic logic = new Logic();
 
     public void controlAvio(Avio avio, ArrayList<Avio> avions) {
 
@@ -99,6 +100,9 @@ public class Pilot {
                 print.volsEnlairar();
                 if (teclat.llegirEnter() == 1) {
                     avio = avio.enlairarse(avio, avions);
+
+                    /** controlar quan es destrueix l'avió*/
+
                 }
             }
         }
@@ -141,8 +145,9 @@ public class Pilot {
 
         if (avio.getTrenAterratge() && zNew > 500) {
             print.errorPilot();
-        } else if (zNew <= 0 && avio.getPosicioRumb().getX() == 100 && (avio.getPosicioRumb().getY() >= 100 || avio.getPosicioRumb().getY() <= 120)) {
-            print.errorPilot();
+        } else if (zNew <= 0 && !(avio.getPosicioRumb().getX() == 100) && !(avio.getPosicioRumb().getY() >= 100 || avio.getPosicioRumb().getY() <= 120)) {
+            logic.eliminarAvio(avio, avions);
+            return null;
         } else {
             desti.setZ(zNew);
             avio = avio.alcada(desti, avions);

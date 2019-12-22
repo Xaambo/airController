@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.PipedOutputStream;
 import java.util.ArrayList;
 
 public class AvioComercial extends Avio {
@@ -31,19 +32,35 @@ public class AvioComercial extends Avio {
     @Override
     public Avio enlairarse(Avio avio, ArrayList<Avio> avions) {
 
-        float velocitat;
+        int velocitat;
+        Coordenada posicioRumb;
 
         print.velocitatEnlairar();
-        velocitat = teclat.llegirFloat("Velociat desitjada? ");
+        velocitat = pilot.velocitat(this, avions).getVelocitat();
 
         if (velocitat == 0) {
+
             print.YareYareDaze();
+
         } else if (velocitat < 180) {
+
             print.noMinimVel();
             avio = enlairarse(this, avions);
+
         } else {
-            avio.setVelocitat(pilot.velocitat(this, avions).getVelocitat());
-            avio.setPosicioRumb(new Coordenada(getPosicioRumb().getX(), 150, 200));
+
+            posicioRumb = avio.getPosicioRumb();
+            avio = pilot.alcada(this, new Coordenada(posicioRumb.getX(), posicioRumb.getY(), posicioRumb.getZ()), avions);
+
+            /* LA COORDENADA ACTUAL ÉS DIFERENT ARA DESPRES DENTRAR AL MÈTODE DE LA ALÇADA */
+            if (avio != null) {
+
+                avio = pilot.moviment(avio, new Coordenada(), avions);
+
+            } else {
+
+                return null;
+            }
         }
 
         return avio;

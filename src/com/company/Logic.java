@@ -65,4 +65,12 @@ public class Logic {
 
         return logic;
     }
+
+    public ArrayList<Avio> eliminarAvio(Avio avio, ArrayList<Avio> avions) {
+
+        avions.remove(avio);
+
+
+        return avions;
+    }
 }
