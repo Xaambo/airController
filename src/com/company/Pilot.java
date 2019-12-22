@@ -98,11 +98,10 @@ public class Pilot {
 
             if (avio.getPosicioRumb().getZ() == 0) {
                 print.volsEnlairar();
+
                 if (teclat.llegirEnter() == 1) {
+
                     avio = avio.enlairarse(avio, avions);
-
-                    /** controlar quan es destrueix l'avió*/
-
                 }
             }
         }
@@ -134,23 +133,33 @@ public class Pilot {
         } else {
             print.noMotor();
             motor(avio, avions);
+            avio = velocitat(avio, avions);
         }
 
         return avio;
     }
 
     public Avio alcada(Avio avio, Coordenada desti, ArrayList<Avio> avions) {
-        
-        int zNew = teclat.llegirEnter("A quina alçada vols anar? ");
 
-        if (avio.getTrenAterratge() && zNew > 500) {
-            print.errorPilot();
-        } else if (zNew <= 0 && !(avio.getPosicioRumb().getX() == 100) && !(avio.getPosicioRumb().getY() >= 100 || avio.getPosicioRumb().getY() <= 120)) {
-            logic.eliminarAvio(avio, avions);
-            return null;
+        if (avio.getMotor()) {
+            int zNew = teclat.llegirEnter("A quina alçada vols anar? ");
+
+            while (zNew < 0) {
+                zNew = teclat.llegirEnter("A quina alçada vols anar? ");
+            }
+
+            if (avio.getTrenAterratge() && zNew > 500) {
+                print.errorPilot();
+            } else if (zNew == 0 && !(avio.getPosicioRumb().getX() == 100) && !(avio.getPosicioRumb().getY() >= 100 || avio.getPosicioRumb().getY() <= 120)) {
+                print.errorPilot();
+            } else {
+                desti.setZ(zNew);
+                avio = avio.alcada(desti, avions);
+            }
         } else {
-            desti.setZ(zNew);
-            avio = avio.alcada(desti, avions);
+            print.noMotor();
+            motor(avio, avions);
+            avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);
         }
 
         return avio;
@@ -159,7 +168,15 @@ public class Pilot {
     public Avio moviment(Avio avio, Coordenada desti, ArrayList<Avio> avions) {
 
         if (avio.getMotor()) {
-            avio.moviment(desti, avions);
+
+            if (avio.getVelocitat() >= 150) {
+                avio.moviment(desti, avions);
+            } else {
+                print.noMinimVel();
+                avio = velocitat(avio, avions);
+                avio = moviment(avio, desti, avions);
+            }
+
         } else {
             print.noMotor();
             avio = motor(avio, avions);

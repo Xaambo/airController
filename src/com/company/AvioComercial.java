@@ -53,14 +53,7 @@ public class AvioComercial extends Avio {
             avio = pilot.alcada(this, new Coordenada(posicioRumb.getX(), posicioRumb.getY(), posicioRumb.getZ()), avions);
 
             /* LA COORDENADA ACTUAL ÉS DIFERENT ARA DESPRES DENTRAR AL MÈTODE DE LA ALÇADA */
-            if (avio != null) {
-
-                avio = pilot.moviment(avio, new Coordenada(), avions);
-
-            } else {
-
-                return null;
-            }
+            avio = pilot.moviment(avio, new Coordenada(), avions);
         }
 
         return avio;

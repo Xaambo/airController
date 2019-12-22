@@ -61,7 +61,7 @@ enum Filtre {
 public class Print {
 
     public void printControladorAeri() {
-        System.out.println("" +
+        System.out.print("" +
                 "CONTROLATOR 5000 ON\n" +
                 "\n" +
                 "1- Afegir un avió al espai aeri.\n" +
@@ -73,7 +73,7 @@ public class Print {
     }
 
     public void printControladorAvio() {
-        System.out.println("" +
+        System.out.print("" +
                 "CONTROLATOR 5000 ON\n" +
                 "\n" +
                 "1- Encendre/Apagar Motor.\n" +
@@ -87,7 +87,7 @@ public class Print {
     }
 
     public void printControladorAvioCombat() {
-        System.out.println("" +
+        System.out.print("" +
                 "CONTROLATOR 5000 ON\n" +
                 "\n" +
                 "1- Encendre/Apagar Motor.\n" +
@@ -103,23 +103,22 @@ public class Print {
     }
 
     public void blocked() {
-        System.out.println("· B · L · O · C · K · E · D ·");
+        System.out.print("· B · L · O · C · K · E · D ·");
     }
 
     public void printNoOpcioSwitch() {
-        System.out.println("Això no és una opció.\n" +
+        System.out.print("Això no és una opció.\n" +
                 "\n");
     }
 
     public void YareYareDaze() {
-        System.out.println("Yare Yare Daze");
+        System.out.print("Yare Yare Daze");
     }
 
     public void creacioAvio() {
-        System.out.println("" +
+        System.out.print("" +
                 "CREACIÓ D'AVIONS\n" +
                 "================\n" +
-                "\n" +
                 "Abans de procedir amb les dades s'hauria d'informar si es vol afegir un avió comercial o un de combat.\n" +
                 "\n" +
                 "1- Comercial\n" +
@@ -139,58 +138,52 @@ public class Print {
 
         System.out.print("" +
                 "GESTIÓ MOTOR\n" +
-                "================\n" +
+                "============\n" +
                 "1- Encendre\n" +
                 "2- Apagar\n" +
                 "Tens el motor " + estat + " què vols fer? ");
     }
 
     public void creacioAvioComercial() {
-        System.out.println("" +
+        System.out.print("" +
                 "CREACIÓ D'UN AVIÓ COMERCIAL\n" +
                 "===========================\n" +
-                "Per crear-lo necessitem que s'omplenin les dades que es demanen a continuació.\n" +
-                "\n");
+                "Per crear-lo necessitem que s'omplenin les dades que es demanen a continuació.\n");
     }
 
     public void fitxerNoTrobat() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "El fitxer no ha estat trobat.\n" +
-                "\n");
+                "El fitxer no ha estat trobat.\n");
     }
 
     public void pistaNoLliure() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "Ja hi ha un avió a la pista, fins que aquest no s'enlairi no se'n pot col·locar un de nou." +
-                "\n");
+                "Ja hi ha un avió a la pista, fins que aquest no s'enlairi no se'n pot col·locar un de nou.");
     }
 
     public void matriculaErronia() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "La matrícula ha de tenir 7 caràcters obligatoriament.\n" +
-                "\n");
+                "La matrícula ha de tenir 7 caràcters obligatoriament.\n");
     }
 
     public void avioForaPista() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "L'avió ha d'estar dintre la pista.\n" +
-                "\n");
+                "L'avió ha d'estar dintre la pista.\n");
     }
 
     public void maxAvions() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "S'ha arribat a la capacitat màxima d'avions que es poden control·lar.\n" +
-                "\n");
+                "S'ha arribat a la capacitat màxima d'avions que es poden control·lar.\n");
     }
 
     public void liniaBlanca() {
@@ -198,21 +191,17 @@ public class Print {
     }
 
     public void errorPilot() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\n\nERROR\n" +
                 "=====\n" +
-                "No pots fer això, sería catastròfic.\n" +
-                "\n");
+                "No pots fer això, sería catastròfic.");
     }
 
     public ArrayList<Avio> llistaAvions(ArrayList<Avio> avions, Filtre filtre) {
 
-        boolean algunAvio = false;
         ArrayList<Avio> avionsFiltre = new ArrayList<>();
 
         if (avions.size() > 0) {
-
-            algunAvio = true;
 
             avionsFiltre = filtre.filtrar(avions, avionsFiltre);
 
@@ -222,7 +211,7 @@ public class Print {
 
                     Avio avio = avionsFiltre.get(i);
 
-                    System.out.println("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
+                    System.out.print("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
                 }
                 liniaBlanca();
             } else {
@@ -237,54 +226,54 @@ public class Print {
     }
 
     public void noAvions() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "No hi ha avions creats\n" +
-                "\n");
+                "No hi ha avions creats\n");
     }
 
     public void unknown() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "Error desconegut contacti amb l'adminstrador.\n" +
-                "\n");
+                "Error desconegut contacti amb l'adminstrador.\n");
     }
 
     public void noMotor() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "Motors apagats\n" +
-                "\n");
+                "Motors apagats\n");
     }
 
     public void volsEnlairar() {
-        System.out.println("" +
-                "WARNING\n" +
+        System.out.print("" +
+                "\nWARNING\n" +
                 "=======\n" +
                 "Estas aterrat vols enlairar-te?\n" +
                 "1- Si\n" +
-                "2- No\n" +
-                "\n");
+                "2- No\n");
     }
 
     public void velocitatEnlairar() {
-        System.out.println("" +
-                "Per enlairarte has de pujar la velocitat a un mínim de 180.\n");
+        System.out.print("" +
+                "Per enlairar-te has de pujar la velocitat a un mínim de 180.\n");
+    }
+
+    public void velocitatEnlairarAvioCombat() {
+        System.out.print("" +
+                "Per enlairar un avió de combat has de pujar la velocitat a un mínim de 150.\n");
     }
 
     public void noMinimVel() {
-        System.out.println("" +
-                "ERROR\n" +
+        System.out.print("" +
+                "\nERROR\n" +
                 "=====\n" +
-                "La velocitat mínima és de 180\n" +
-                "\n");
+                "No vas a la velocitat mínima requerida\n");
     }
 
     public void motorEnces() {
-        System.out.println("" +
+        System.out.print("" +
                 "\n" +
                 "=============================\n" +
                 "Motor encès satifactoriament!\n" +
@@ -293,7 +282,7 @@ public class Print {
     }
 
     public void motorApagat() {
-        System.out.println("" +
+        System.out.print("" +
                 "\n" +
                 "==============================\n" +
                 "Motor apagat satifactoriament!\n" +
@@ -302,7 +291,7 @@ public class Print {
     }
 
     public void avioCreat() {
-        System.out.println("" +
+        System.out.print("" +
                 "\n" +
                 "============================\n" +
                 "Avió creat satifactoriament!\n" +
@@ -311,7 +300,7 @@ public class Print {
     }
 
     public void avioEliminat() {
-        System.out.println("" +
+        System.out.print("" +
                 "\n" +
                 "===============================\n" +
                 "Avió eliminat satifactoriament!\n" +
@@ -320,7 +309,7 @@ public class Print {
     }
 
     public void printMisils() {
-        System.out.println("" +
+        System.out.print("" +
                 "Mísils disponibles\n" +
                 "==================\n" +
                 "\n" +
