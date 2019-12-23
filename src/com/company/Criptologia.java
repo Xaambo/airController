@@ -16,22 +16,23 @@ public class Criptologia {
         String criptat;
         String arxiu = avio.getMatricula() + ".hash";
 
+        File file = new File(arxiu);
+
+        if (file.exists()) {
+            file.delete();
+        }
+
         criptat = Base64.getEncoder().encodeToString(avio.getMatricula().getBytes(StandardCharsets.UTF_8));
 
         try (FileWriter fw = new FileWriter(arxiu, true); BufferedWriter bw = new BufferedWriter(fw); PrintWriter out = new PrintWriter(bw)) {
 
             out.println(criptat);
 
-        } catch (FileAlreadyExistsException fae) {
-            File file = new File(arxiu);
-            file.delete();
-
-            xifrar(avio);
         } catch (IOException e) {
             print.unknown();
         }
 
-        // mantenir la matricula igual pero hashear tot lo altre pero guardant la matricula en el hash
+        //Mantenir la matricula igual pero hashear tot lo altre pero guardant la matricula en el hash
 
         avio.setMarca(Base64.getEncoder().encodeToString(avio.getMarca().getBytes(StandardCharsets.UTF_8)));
         avio.setModel(Base64.getEncoder().encodeToString(avio.getModel().getBytes(StandardCharsets.UTF_8)));
@@ -74,7 +75,7 @@ public class Criptologia {
 
         }
 
-        // agafar la matricula hashearla i compararla, si son iguals es desxifra tot lo altre
+        //Agafar la matricula hashearla i compararla, si son iguals es desxifra tot lo altre
 
         return avio;
     }

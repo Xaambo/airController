@@ -128,7 +128,7 @@ public class Pilot {
         } else {
             print.noMotor();
             motor(avio, avions);
-            avio = velocitat(avio, avions);
+            /*avio = velocitat(avio, avions);*/
         }
 
         return avio;
@@ -148,8 +148,9 @@ public class Pilot {
 
                 if (avio.getTrenAterratge() && zNew > 500) {
 
-                    avio = trenAterratge(avio);
-                    avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);
+                    print.alturaTren();
+                    /*avio = trenAterratge(avio);*/
+                    /*avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);*/
 
                 } else if (zNew == 0 && avio.getPosicioRumb().getX() != 100 && (avio.getPosicioRumb().getY() < 100 || avio.getPosicioRumb().getY() > 120)) {
 
@@ -164,13 +165,13 @@ public class Pilot {
             } else {
                 print.noMinimVel();
                 avio = velocitat(avio, avions);
-                avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);
+                /*avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);*/
             }
 
         } else {
             print.noMotor();
             motor(avio, avions);
-            avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);
+            /*avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);*/
         }
 
         return avio;
@@ -185,13 +186,13 @@ public class Pilot {
             } else {
                 print.noMinimVel();
                 avio = velocitat(avio, avions);
-                avio = moviment(avio, desti, avions);
+                /*avio = moviment(avio, desti, avions);*/
             }
 
         } else {
             print.noMotor();
             avio = motor(avio, avions);
-            avio = moviment(avio, desti, avions);
+            /*avio = moviment(avio, desti, avions);*/
         }
 
         return avio;
@@ -204,6 +205,7 @@ public class Pilot {
             if (avio.getPosicioRumb().getZ() != 0) {
 
                 avio.pujarTren();
+                print.trenAterratgePujat();
 
             } else {
                 print.terra();
@@ -216,6 +218,7 @@ public class Pilot {
                 if (avio.getVelocitat() < 300) {
 
                     avio.baixarTren();
+                    print.trenAterratgeBaixat();
 
                 } else {
                     print.massaVelocitat();

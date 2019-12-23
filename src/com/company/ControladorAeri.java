@@ -21,7 +21,7 @@ public class ControladorAeri {
         opcio = teclat.llegirEnter("Què vols fer? ");
         while (opcio != 0) {
             switch (opcio) {
-                case 1:
+                case 1://crear avio
                     pistaLliure = radar.pistaEstaLliure(pistaLliure);
 
                     if (pistaLliure) {
@@ -30,10 +30,11 @@ public class ControladorAeri {
                         print.pistaNoLliure();
                     }
                     break;
-                case 2:
+                case 2://gestionar els avions i tot el que poden fer
                     gestionarAvions();
                     break;
-                case 3:
+                case 3://estat actual dels avions
+                    radar.resumSituacio();
                     break;
                 case 4:
                     xifrarAvions();

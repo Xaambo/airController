@@ -107,8 +107,7 @@ public class Print {
     }
 
     public void printNoOpcioSwitch() {
-        System.out.print("Això no és una opció.\n" +
-                "\n");
+        System.out.print("\nAixò no és una opció.\n");
     }
 
     public void YareYareDaze() {
@@ -307,6 +306,13 @@ public class Print {
                 "\nERROR\n" +
                 "=====\n" +
                 "A terra no pots fer això\n");
+    }
+
+    public void alturaTren() {
+        System.out.print("" +
+                "\nERROR\n" +
+                "=====\n" +
+                "No pots pujar tant amb el tren baixat.\n");
     }
 
     public void motorEnces() {

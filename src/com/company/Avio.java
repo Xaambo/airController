@@ -151,32 +151,32 @@ public abstract class Avio {
         boolean collisio = false;
 
         int x = desti.getX();
-        int xBase;
+        int xAvioIterant;
         int y = desti.getY();
-        int yBase;
+        int yAvioIterant;
         int z = desti.getZ();
-        int zBase;
+        int zAvioIterant;
 
         double distancia;
         double distanciaTemp;
 
         Coordenada coordAvioIterant = avions.get(0).getPosicioRumb();
 
-        xBase = coordAvioIterant.getX();
-        yBase = coordAvioIterant.getY();
-        zBase = coordAvioIterant.getZ();
+        xAvioIterant = coordAvioIterant.getX();
+        yAvioIterant = coordAvioIterant.getY();
+        zAvioIterant = coordAvioIterant.getZ();
 
-        distancia = Math.sqrt(Math.pow((xBase - x), 2) + Math.pow((yBase - y), 2) + Math.pow((zBase - z), 2));
+        distancia = Math.sqrt(Math.pow((xAvioIterant - x), 2) + Math.pow((yAvioIterant - y), 2) + Math.pow((zAvioIterant - z), 2));
 
         for (int i = 0; i < avions.size(); i++) {
             if (avions.get(i) != this) {
                 coordAvioIterant = avions.get(i).getPosicioRumb();
 
-                xBase = coordAvioIterant.getX();
-                yBase = coordAvioIterant.getY();
-                zBase = coordAvioIterant.getZ();
+                xAvioIterant = coordAvioIterant.getX();
+                yAvioIterant = coordAvioIterant.getY();
+                zAvioIterant = coordAvioIterant.getZ();
 
-                distanciaTemp = Math.sqrt(Math.pow((xBase - x), 2) + Math.pow((yBase - y), 2) + Math.pow((zBase - z), 2));
+                distanciaTemp = Math.sqrt(Math.pow((xAvioIterant - x), 2) + Math.pow((yAvioIterant - y), 2) + Math.pow((zAvioIterant - z), 2));
 
                 if (distanciaTemp <= distancia) {
                     distancia = distanciaTemp;
@@ -188,10 +188,10 @@ public abstract class Avio {
             collisio = true;
         }
 
-        /*for (xBase = (x-1); (xBase <= (x+1)) && !collisio; xBase++) {
-            for (yBase = (y-1); (yBase <= (y+1)) && !collisio; yBase++) {
-                for (zBase = (z-1); (zBase <= (z+1)) && !collisio; zBase++) {
-                    if (coordAvioMesProper.getX() == xBase && coordAvioMesProper.getY() == yBase && coordAvioMesProper.getZ() == zBase) {
+        /*for (xAvioIterant = (x-1); (xAvioIterant <= (x+1)) && !collisio; xAvioIterant++) {
+            for (yAvioIterant = (y-1); (yAvioIterant <= (y+1)) && !collisio; yAvioIterant++) {
+                for (zAvioIterant = (z-1); (zAvioIterant <= (z+1)) && !collisio; zAvioIterant++) {
+                    if (coordAvioMesProper.getX() == xAvioIterant && coordAvioMesProper.getY() == yAvioIterant && coordAvioMesProper.getZ() == zAvioIterant) {
                         collisio = true;
                     }
                 }
