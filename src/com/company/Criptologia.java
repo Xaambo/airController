@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
@@ -21,6 +22,11 @@ public class Criptologia {
 
             out.println(criptat);
 
+        } catch (FileAlreadyExistsException fae) {
+            File file = new File(arxiu);
+            file.delete();
+
+            xifrar(avio);
         } catch (IOException e) {
             print.unknown();
         }

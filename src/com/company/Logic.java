@@ -1,5 +1,6 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Logic {
@@ -70,7 +71,19 @@ public class Logic {
 
         avions.remove(avio);
 
-
         return avions;
+    }
+
+    public boolean existeix(ArrayList<Avio> avions, String matricula) {
+
+        boolean existeix = false;
+
+        for (int i = 0; i < avions.size() && !existeix; i++) {
+            if (matricula.equals(avions.get(i).getMatricula())) {
+                existeix = true;
+            }
+        }
+
+        return existeix;
     }
 }

@@ -123,6 +123,11 @@ public class ControladorAeri {
                     print.matriculaErronia();
                     dades = teclat.llegirString("Matrícula? ");
                 } else {
+
+                    if (logic.existeix(avions, dades)) {
+
+                    }
+
                     matricula = dades;
                     correcte = true;
                 }

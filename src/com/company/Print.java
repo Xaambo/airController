@@ -51,7 +51,7 @@ enum Filtre {
                 }
             }
 
-            return null;
+            return avionsFiltrats;
         }
     };
 
@@ -172,11 +172,11 @@ public class Print {
                 "La matrícula ha de tenir 7 caràcters obligatoriament.\n");
     }
 
-    public void avioForaPista() {
+    public void avioJaExisteix() {
         System.out.print("" +
                 "\nERROR\n" +
                 "=====\n" +
-                "L'avió ha d'estar dintre la pista.\n");
+                "L'avió que intentas crear ja existeix.\n");
     }
 
     public void maxAvions() {
