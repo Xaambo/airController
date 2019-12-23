@@ -14,13 +14,7 @@ public class Criptologia {
     public Avio xifrar(Avio avio) {
 
         String criptat;
-        String arxiu = avio.getMatricula() + ".hash";
-
-        File file = new File(arxiu);
-
-        if (file.exists()) {
-            file.delete();
-        }
+        String arxiu = "hashes/" + avio.getMatricula() + ".hash";
 
         criptat = Base64.getEncoder().encodeToString(avio.getMatricula().getBytes(StandardCharsets.UTF_8));
 
@@ -45,10 +39,10 @@ public class Criptologia {
 
         String comparacio;
         String hash = "";
-        String arxiu = avio.getMatricula() + ".hash";
+        String arxiu = "hashes/" + avio.getMatricula() + ".hash";
 
         try {
-            hash = new String(Files.readAllBytes(Paths.get(arxiu)));
+            hash = new String(Files.readAllBytes(Paths.get(arxiu))); //new string pq retorna una array de bytes
             hash = hash.substring(0, hash.length() - 2);
         } catch (Exception e) {
             print.fitxerNoTrobat();

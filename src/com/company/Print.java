@@ -38,7 +38,7 @@ enum Filtre {
         }
     },
 
-    deCOMBAT {
+    deCOMBAT_XIFRATS {
         @Override
         ArrayList<Avio> filtrar(ArrayList<Avio> avions, ArrayList<Avio> avionsFiltrats) {
 
@@ -46,7 +46,24 @@ enum Filtre {
 
                 Avio avio = avions.get(i);
 
-                if (avio != null && avio.getDeCombat()) {
+                if (avio != null && (avio.getDeCombat() && avio.isXifrat())) {
+                    avionsFiltrats.add(avio);
+                }
+            }
+
+            return avionsFiltrats;
+        }
+    },
+
+    deCOMBAT_noXIFRATS {
+        @Override
+        ArrayList<Avio> filtrar(ArrayList<Avio> avions, ArrayList<Avio> avionsFiltrats) {
+
+            for (int i = 0; i < avions.size(); i++) {
+
+                Avio avio = avions.get(i);
+
+                if (avio != null && (avio.getDeCombat() && !avio.isXifrat())) {
                     avionsFiltrats.add(avio);
                 }
             }
@@ -200,6 +217,10 @@ public class Print {
 
         ArrayList<Avio> avionsFiltre = new ArrayList<>();
 
+        System.out.println("" +
+                "\nAVIONS CONTROLATS" + "\n" +
+                "=================");
+
         if (avions.size() > 0) {
 
             avionsFiltre = filtre.filtrar(avions, avionsFiltre);
@@ -268,6 +289,20 @@ public class Print {
                 "Estas aterrat\n" +
                 "1- Si\n" +
                 "2- No\n");
+    }
+
+    public void avioPerdut() {
+        System.out.print("" +
+                "\nWARNING\n" +
+                "=======\n" +
+                "L'avió ha sortit del nostre rang d'acció i n'em perdut la pista.\n");
+    }
+
+    public void avioDestruit() {
+        System.out.print("" +
+                "\nWARNING\n" +
+                "=======\n" +
+                "L'avió ha sigut destruit.\n");
     }
 
     public void velocitatEnlairar() {
@@ -389,7 +424,7 @@ public class Print {
 
     public void printMisils() {
         System.out.print("" +
-                "Mísils disponibles\n" +
+                "\nMísils disponibles\n" +
                 "==================\n" +
                 "\n" +
                 "1- A-A Llarga distància\n" +

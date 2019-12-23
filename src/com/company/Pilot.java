@@ -6,6 +6,7 @@ public class Pilot {
 
     Print print = new Print();
     cLector teclat = new cLector();
+    Logic logic = new Logic();
 
     public void controlAvio(Avio avio, ArrayList<Avio> avions) {
 
@@ -60,13 +61,21 @@ public class Pilot {
                     print.printNoOpcioSwitch();
             }
 
-            if (!deCombat) {
-                print.printControladorAvio();
-            } else {
-                print.printControladorAvioCombat();
-            }
+            if (avio.isDestruit()) {
 
-            opcio = teclat.llegirEnter("Què vols fer? ");
+                opcio = 0;
+
+            } else {
+
+                if (!deCombat) {
+                    print.printControladorAvio();
+                } else {
+                    print.printControladorAvioCombat();
+                }
+
+                opcio = teclat.llegirEnter("Què vols fer? ");
+
+            }
         }
 
         print.YareYareDaze();
@@ -154,7 +163,8 @@ public class Pilot {
 
                 } else if (zNew == 0 && avio.getPosicioRumb().getX() != 100 && (avio.getPosicioRumb().getY() < 100 || avio.getPosicioRumb().getY() > 120)) {
 
-                    print.errorPilot();
+                    avio = logic.eliminarAvio(avio);
+                    print.avioDestruit();
 
                 } else {
 

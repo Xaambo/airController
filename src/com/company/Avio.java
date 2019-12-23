@@ -6,6 +6,7 @@ public abstract class Avio {
 
     Print print = new Print();
     cLector teclat = new cLector();
+    Logic logic = new Logic();
 
     private static int DISTANCIASEGURETAT = 15;
 
@@ -20,6 +21,7 @@ public abstract class Avio {
     private boolean trenAterratge = true;
     private boolean deCombat;
     private boolean xifrat = false;
+    private boolean destruit = false;
 
     public Avio(String matricula, String marca, String model, int tripulacio, Coordenada posicioRumb, boolean deCombat) {
         this.matricula = matricula;
@@ -96,6 +98,14 @@ public abstract class Avio {
         this.xifrat = xifrat;
     }
 
+    public boolean isDestruit() {
+        return destruit;
+    }
+
+    public void setDestruit(boolean destruit) {
+        this.destruit = destruit;
+    }
+
     /** METODES */
 
     public abstract Avio enlairarse(Avio avio, ArrayList<Avio> avions);
@@ -134,15 +144,23 @@ public abstract class Avio {
         int x = teclat.llegirEnter("On vols anar?(X) ");
         int y = teclat.llegirEnter("On vols anar?(Y) ");
 
-        desti.setX(x);
-        desti.setY(y);
-        desti.setZ(posicioRumb.getZ());
+        if (x > 1000 || y > 1000) {
 
-        if (!controlCollisio(avions , desti)) {
-            posicioRumb = desti;
-            print.movimentDone();
+            logic.eliminarAvio(this);
+            print.avioPerdut();
+
         } else {
-            print.errorPilot();
+
+            desti.setX(x);
+            desti.setY(y);
+            desti.setZ(posicioRumb.getZ());
+
+            if (!controlCollisio(avions, desti)) {
+                posicioRumb = desti;
+                print.movimentDone();
+            } else {
+                print.errorPilot();
+            }
         }
     }
 

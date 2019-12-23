@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.File;
+
 public class Main {
 
     ControladorAeri controladorAeri = new ControladorAeri();
@@ -11,6 +13,18 @@ public class Main {
     }
 
     public void inici() {
+
+        File directori = new File("hashes");
+
+        if (!directori.exists()) {
+            directori.mkdir();
+        } else {
+            File[] files = directori.listFiles();
+
+            for (File file : files) {
+                file.delete();
+            }
+        }
 
         controladorAeri.controlAeri();
 

@@ -67,11 +67,11 @@ public class Logic {
         return logic;
     }
 
-    public ArrayList<Avio> eliminarAvio(Avio avio, ArrayList<Avio> avions) {
+    public Avio eliminarAvio(Avio avio) {
 
-        avions.remove(avio);
+        avio.setDestruit(true);
 
-        return avions;
+        return avio;
     }
 
     public boolean existeix(ArrayList<Avio> avions, String matricula) {

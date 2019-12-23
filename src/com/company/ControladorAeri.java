@@ -34,12 +34,12 @@ public class ControladorAeri {
                     gestionarAvions();
                     break;
                 case 3://estat actual dels avions
-                    radar.resumSituacio();
+                    mostrarRadar();
                     break;
-                case 4:
+                case 4://xifrar avions
                     xifrarAvions();
                     break;
-                case 5:
+                case 5://desxifrar avions
                     desxifrarAvions();
                     break;
                 default:
@@ -84,23 +84,6 @@ public class ControladorAeri {
         }
     }
 
-    /*private void eliminarAvio() {
-
-        ArrayList<Avio> avions = radar.getAvions();
-        int posicio;
-        boolean algunAvio;
-
-        algunAvio = print.llistaAvions(avions);
-
-        if (algunAvio) {
-            posicio = logic.trobar(avions);
-
-            avions.remove(posicio);
-
-            print.avioEliminat();
-        }
-    }*/
-
     private ArrayList<Avio> avio(int avio, ArrayList<Avio> avions) {
 
         String dades, matricula, marca, model;
@@ -121,16 +104,23 @@ public class ControladorAeri {
 
             while (!correcte) {
                 if (dades.length() != 7) {
+
                     print.matriculaErronia();
                     dades = teclat.llegirString("Matrícula? ");
+
                 } else {
 
                     if (logic.existeix(avions, dades)) {
 
-                    }
+                        print.avioJaExisteix();
+                        dades = teclat.llegirString("Matrícula? ");
 
-                    matricula = dades;
-                    correcte = true;
+                    } else {
+
+                        matricula = dades;
+                        correcte = true;
+
+                    }
                 }
             }
 
@@ -260,7 +250,7 @@ public class ControladorAeri {
         Avio avio;
         int posicio;
 
-        avionsFiltre = print.llistaAvions(avions, Filtre.noXIFRATS);
+        avionsFiltre = print.llistaAvions(avions, Filtre.deCOMBAT_noXIFRATS);
 
         if (avionsFiltre.size() > 0) {
             logic = this.logic.trobar(avionsFiltre);
@@ -286,7 +276,7 @@ public class ControladorAeri {
         Avio avio;
         int posicio;
 
-        avionsFiltre = print.llistaAvions(avions, Filtre.XIFRATS);
+        avionsFiltre = print.llistaAvions(avions, Filtre.deCOMBAT_XIFRATS);
 
         if (avionsFiltre.size() > 0) {
             logic = this.logic.trobar(avionsFiltre);
