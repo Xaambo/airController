@@ -7,7 +7,8 @@ public class AvioCombat extends Avio {
     Pilot pilot = new Pilot();
 
     private ArrayList<Misil> misils;
-    boolean amic;
+    private boolean amic;
+    private boolean enMissio = false;
 
     public AvioCombat(String matricula, String marca, String model, int tripulacio, Coordenada posicioRumb, ArrayList<Misil> misils, boolean deCombat, boolean amic) {
         super(matricula, marca, model, tripulacio, posicioRumb, deCombat);
@@ -22,6 +23,14 @@ public class AvioCombat extends Avio {
 
     public boolean getAmic() {
         return amic;
+    }
+
+    public boolean isEnMissio() {
+        return enMissio;
+    }
+
+    public void setEnMissio(boolean enMissio) {
+        this.enMissio = enMissio;
     }
 
     @Override

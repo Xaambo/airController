@@ -45,14 +45,14 @@ public class Pilot {
                     break;
                 case 8:
                     if (deCombat) {
-
+                        avio = iniciarOperacio(avio, avions);
                     } else {
                         print.blocked();
                     }
                     break;
                 case 9:
                     if (deCombat) {
-
+                        avio = finalitzarOperacio(avio);
                     } else {
                         print.blocked();
                     }
@@ -79,6 +79,20 @@ public class Pilot {
         }
 
         print.YareYareDaze();
+    }
+
+    private Avio iniciarOperacio(Avio avio, ArrayList<Avio> avions) {
+
+
+
+        return avio;
+    }
+
+    private Avio finalitzarOperacio(Avio avio) {
+
+
+
+        return avio;
     }
 
     public Avio motor(Avio avio, ArrayList<Avio> avions) {

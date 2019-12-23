@@ -88,7 +88,7 @@ public class ControladorAeri {
 
         String dades, matricula, marca, model;
         int dadesInt, tripulacio, maxPassatgers = 0;
-        boolean avioCorrecte = false, correcte;
+        boolean avioCorrecte = false, correcte, amic;
         Coordenada posicioRumb = new Coordenada();
         ArrayList<Misil> misils = new ArrayList<>();
 
@@ -150,7 +150,23 @@ public class ControladorAeri {
             if (avio == 1) {
                 avions.add(/*avions.lastIndexOf(null),*/ new AvioComercial(matricula, marca, model, tripulacio, posicioRumb, maxPassatgers, false));
             } else {
-                avions.add(/*avions.lastIndexOf(null),*/ new AvioCombat(matricula, marca, model, tripulacio, posicioRumb, misils, true, true));
+                print.bandol();
+
+                dadesInt = teclat.llegirEnter("Amic o enemic? ");
+
+                while (true) {
+                    if (dadesInt == 1) {
+                        amic = true;
+                        break;
+                    } else if (dadesInt == 2) {
+                        amic = false;
+                        break;
+                    } else {
+                        dadesInt = teclat.llegirEnter("Amic o enemic? ");
+                    }
+                }
+
+                avions.add(/*avions.lastIndexOf(null),*/ new AvioCombat(matricula, marca, model, tripulacio, posicioRumb, misils, true, amic));
             }
             avioCorrecte = true;
 
@@ -219,7 +235,7 @@ public class ControladorAeri {
         Avio avio;
         int posicio;
 
-        avionsFiltre = print.llistaAvions(avions, Filtre.noXIFRATS);
+        avionsFiltre = print.llistaAvions(avions, Filtre.noXIFRATS, 1);
 
         if (avionsFiltre.size() > 0) {
 
@@ -250,7 +266,7 @@ public class ControladorAeri {
         Avio avio;
         int posicio;
 
-        avionsFiltre = print.llistaAvions(avions, Filtre.deCOMBAT_noXIFRATS);
+        avionsFiltre = print.llistaAvions(avions, Filtre.deCOMBAT_noXIFRATS, 2);
 
         if (avionsFiltre.size() > 0) {
             logic = this.logic.trobar(avionsFiltre);
@@ -276,7 +292,7 @@ public class ControladorAeri {
         Avio avio;
         int posicio;
 
-        avionsFiltre = print.llistaAvions(avions, Filtre.deCOMBAT_XIFRATS);
+        avionsFiltre = print.llistaAvions(avions, Filtre.deCOMBAT_XIFRATS, 3);
 
         if (avionsFiltre.size() > 0) {
             logic = this.logic.trobar(avionsFiltre);

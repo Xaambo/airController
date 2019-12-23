@@ -46,8 +46,11 @@ enum Filtre {
 
                 Avio avio = avions.get(i);
 
-                if (avio != null && (avio.getDeCombat() && avio.isXifrat())) {
-                    avionsFiltrats.add(avio);
+                if (avio instanceof AvioCombat) {
+
+                    if (avio.isXifrat() && ((AvioCombat) avio).getAmic()) {
+                        avionsFiltrats.add(avio);
+                    }
                 }
             }
 
@@ -63,8 +66,11 @@ enum Filtre {
 
                 Avio avio = avions.get(i);
 
-                if (avio != null && (avio.getDeCombat() && !avio.isXifrat())) {
-                    avionsFiltrats.add(avio);
+                if (avio instanceof AvioCombat) {
+
+                    if (!avio.isXifrat() && ((AvioCombat) avio).getAmic()) {
+                        avionsFiltrats.add(avio);
+                    }
                 }
             }
 
@@ -160,6 +166,14 @@ public class Print {
                 "Tens el motor " + estat + " què vols fer? ");
     }
 
+    public void bandol() {
+        System.out.println("" +
+                "\nBÀNDOL\n" +
+                "======\n" +
+                "1- Amic\n" +
+                "2- Enemic");
+    }
+
     public void creacioAvioComercial() {
         System.out.print("" +
                 "\nCREACIÓ D'UN AVIÓ COMERCIAL\n" +
@@ -213,13 +227,23 @@ public class Print {
                 "No pots fer això, sería catastròfic.");
     }
 
-    public ArrayList<Avio> llistaAvions(ArrayList<Avio> avions, Filtre filtre) {
+    public ArrayList<Avio> llistaAvions(ArrayList<Avio> avions, Filtre filtre, int titol) {
 
         ArrayList<Avio> avionsFiltre = new ArrayList<>();
 
-        System.out.println("" +
-                "\nAVIONS CONTROLATS" + "\n" +
-                "=================");
+        switch (titol) {
+            case 1:
+                llistaGestio();
+                break;
+            case 2:
+                llistaXifrar();
+                break;
+            case 3:
+                llistaDesXifrar();
+                break;
+            case 4:
+                llistaDisparar();
+        }
 
         if (avions.size() > 0) {
 
@@ -231,7 +255,11 @@ public class Print {
 
                     Avio avio = avionsFiltre.get(i);
 
-                    System.out.println("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
+                    if (avio instanceof AvioCombat) {
+                        System.out.println("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel() + " | Amic: " + ((AvioCombat) avio).getAmic());
+                    } else {
+                        System.out.println("- Matrícula: " + avio.getMatricula() + " | Marca: " + avio.getMarca() + " | Model: " + avio.getModel());
+                    }
                 }
                 liniaBlanca();
             } else {
@@ -384,6 +412,30 @@ public class Print {
                 "Avió eliminat satifactoriament!\n" +
                 "===============================" +
                 "\n");
+    }
+
+    public void llistaGestio() {
+        System.out.println("" +
+                "\nAVIONS CONTROLATS\n" +
+                "=================");
+    }
+
+    public void llistaXifrar() {
+        System.out.println("" +
+                "\nAVIONS A XIFRAR\n" +
+                "===============");
+    }
+
+    public void llistaDesXifrar() {
+        System.out.println("" +
+                "\nAVIONS A DESXIFRAR\n" +
+                "==================");
+    }
+
+    public void llistaDisparar() {
+        System.out.println("" +
+                "\nAVIONS EN RANG DE TIR\n" +
+                "=====================");
     }
 
     public void alcadaDone() {
