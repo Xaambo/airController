@@ -7,6 +7,7 @@ public abstract class Avio {
     Print print = new Print();
     cLector teclat = new cLector();
     Logic logic = new Logic();
+    Collisio collisio = new Collisio();
 
     private static int DISTANCIASEGURETAT = 15;
 
@@ -166,43 +167,9 @@ public abstract class Avio {
 
     public boolean controlCollisio(ArrayList<Avio> avions, Coordenada desti) {
 
-        boolean collisio = false;
+        Boolean collisio = false;
 
-        int x = desti.getX();
-        int xAvioIterant;
-        int y = desti.getY();
-        int yAvioIterant;
-        int z = desti.getZ();
-        int zAvioIterant;
-
-        double distancia;
-        double distanciaTemp;
-
-        Coordenada coordAvioIterant = avions.get(0).getPosicioRumb();
-
-        xAvioIterant = coordAvioIterant.getX();
-        yAvioIterant = coordAvioIterant.getY();
-        zAvioIterant = coordAvioIterant.getZ();
-
-        distancia = Math.sqrt(Math.pow((xAvioIterant - x), 2) + Math.pow((yAvioIterant - y), 2) + Math.pow((zAvioIterant - z), 2));
-
-        for (int i = 0; i < avions.size(); i++) {
-            if (avions.get(i) != this) {
-                coordAvioIterant = avions.get(i).getPosicioRumb();
-
-                xAvioIterant = coordAvioIterant.getX();
-                yAvioIterant = coordAvioIterant.getY();
-                zAvioIterant = coordAvioIterant.getZ();
-
-                distanciaTemp = Math.sqrt(Math.pow((xAvioIterant - x), 2) + Math.pow((yAvioIterant - y), 2) + Math.pow((zAvioIterant - z), 2));
-
-                if (distanciaTemp <= distancia) {
-                    distancia = distanciaTemp;
-                }
-            }
-        }
-
-        if (distancia < DISTANCIASEGURETAT) {
+        if (this.collisio.logicaCollisio(this, avions, desti, DISTANCIASEGURETAT).getDistancia() < DISTANCIASEGURETAT) {
             collisio = true;
         }
 
