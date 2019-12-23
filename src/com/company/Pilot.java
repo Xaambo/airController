@@ -6,7 +6,6 @@ public class Pilot {
 
     Print print = new Print();
     cLector teclat = new cLector();
-    Logic logic = new Logic();
 
     public void controlAvio(Avio avio, ArrayList<Avio> avions) {
 
@@ -38,11 +37,7 @@ public class Pilot {
 
                     break;
                 case 6:
-                    if (avio.getTrenAterratge()) {
-                        avio.pujarTren();
-                    } else {
-                        avio.baixarTren();
-                    }
+                    avio = trenAterratge(avio);
                     break;
                 case 7:
                     print.infoAvio(avio);
@@ -99,7 +94,7 @@ public class Pilot {
             if (avio.getPosicioRumb().getZ() == 0) {
                 print.volsEnlairar();
 
-                if (teclat.llegirEnter() == 1) {
+                if (teclat.llegirEnter("Vols enlairar-te? ") == 1) {
 
                     avio = avio.enlairarse(avio, avions);
                 }
@@ -142,20 +137,36 @@ public class Pilot {
     public Avio alcada(Avio avio, Coordenada desti, ArrayList<Avio> avions) {
 
         if (avio.getMotor()) {
-            int zNew = teclat.llegirEnter("A quina alçada vols anar? ");
 
-            while (zNew < 0) {
-                zNew = teclat.llegirEnter("A quina alçada vols anar? ");
-            }
+            if (avio.getVelocitat() >= 150) {
 
-            if (avio.getTrenAterratge() && zNew > 500) {
-                print.errorPilot();
-            } else if (zNew == 0 && avio.getPosicioRumb().getX() != 100 && (avio.getPosicioRumb().getY() < 100 || avio.getPosicioRumb().getY() > 120)) {
-                print.errorPilot();
+                int zNew = teclat.llegirEnter("A quina alçada vols anar? ");
+
+                while (zNew < 0) {
+                    zNew = teclat.llegirEnter("A quina alçada vols anar? ");
+                }
+
+                if (avio.getTrenAterratge() && zNew > 500) {
+
+                    avio = trenAterratge(avio);
+                    avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);
+
+                } else if (zNew == 0 && avio.getPosicioRumb().getX() != 100 && (avio.getPosicioRumb().getY() < 100 || avio.getPosicioRumb().getY() > 120)) {
+
+                    print.errorPilot();
+
+                } else {
+
+                    desti.setZ(zNew);
+                    avio = avio.alcada(desti, avions);
+                }
+
             } else {
-                desti.setZ(zNew);
-                avio = avio.alcada(desti, avions);
+                print.noMinimVel();
+                avio = velocitat(avio, avions);
+                avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);
             }
+
         } else {
             print.noMotor();
             motor(avio, avions);
@@ -181,6 +192,38 @@ public class Pilot {
             print.noMotor();
             avio = motor(avio, avions);
             avio = moviment(avio, desti, avions);
+        }
+
+        return avio;
+    }
+
+    public Avio trenAterratge(Avio avio) {
+
+        if (avio.getTrenAterratge()) {
+
+            if (avio.getPosicioRumb().getZ() != 0) {
+
+                avio.pujarTren();
+
+            } else {
+                print.terra();
+            }
+
+        } else {
+
+            if (avio.getPosicioRumb().getZ() < 500) {
+
+                if (avio.getVelocitat() < 300) {
+
+                    avio.baixarTren();
+
+                } else {
+                    print.massaVelocitat();
+                }
+
+            } else {
+                print.massaAltura();
+            }
         }
 
         return avio;

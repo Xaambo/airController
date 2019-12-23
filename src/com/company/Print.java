@@ -266,7 +266,7 @@ public class Print {
         System.out.print("" +
                 "\nWARNING\n" +
                 "=======\n" +
-                "Estas aterrat vols enlairar-te?\n" +
+                "Estas aterrat\n" +
                 "1- Si\n" +
                 "2- No\n");
     }
@@ -286,6 +286,27 @@ public class Print {
                 "\nERROR\n" +
                 "=====\n" +
                 "No vas a la velocitat mínima requerida\n");
+    }
+
+    public void massaAltura() {
+        System.out.print("" +
+                "\nERROR\n" +
+                "=====\n" +
+                "Estas a massa altura, descendeix per sota dels 500 per fer això\n");
+    }
+
+    public void massaVelocitat() {
+        System.out.print("" +
+                "\nERROR\n" +
+                "=====\n" +
+                "Vas massa ràpid, desaccelera per sota dels 300 per fer això\n");
+    }
+
+    public void terra() {
+        System.out.print("" +
+                "\nERROR\n" +
+                "=====\n" +
+                "A terra no pots fer això\n");
     }
 
     public void motorEnces() {
@@ -321,6 +342,42 @@ public class Print {
                 "===============================\n" +
                 "Avió eliminat satifactoriament!\n" +
                 "===============================" +
+                "\n");
+    }
+
+    public void alcadaDone() {
+        System.out.print("" +
+                "\n" +
+                "===================================\n" +
+                "Alçada conseguida satifactoriament!\n" +
+                "===================================" +
+                "\n");
+    }
+
+    public void movimentDone() {
+        System.out.print("" +
+                "\n" +
+                "===================================\n" +
+                "Moviment efectuat satifactoriament!\n" +
+                "===================================" +
+                "\n");
+    }
+
+    public void trenAterratgePujat() {
+        System.out.print("" +
+                "\n" +
+                "========================================\n" +
+                "Tren d'aterratge pujat satifactoriament!\n" +
+                "========================================" +
+                "\n");
+    }
+
+    public void trenAterratgeBaixat() {
+        System.out.print("" +
+                "\n" +
+                "=========================================\n" +
+                "Tren d'aterratge baixat satifactoriament!\n" +
+                "=========================================" +
                 "\n");
     }
 

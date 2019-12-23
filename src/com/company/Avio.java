@@ -123,6 +123,7 @@ public abstract class Avio {
 
         if (!controlCollisio(avions, desti)) {
             posicioRumb.setZ(desti.getZ());
+            print.alcadaDone();
         }
 
         return this;
@@ -139,6 +140,7 @@ public abstract class Avio {
 
         if (!controlCollisio(avions , desti)) {
             posicioRumb = desti;
+            print.movimentDone();
         } else {
             print.errorPilot();
         }
