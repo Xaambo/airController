@@ -36,7 +36,7 @@ public class Pilot {
                     avio = moviment(avio, new Coordenada(), avions);
                     break;
                 case 5:
-
+                    avio = rumb(avio);
                     break;
                 case 6:
                     avio = trenAterratge(avio);
@@ -80,6 +80,44 @@ public class Pilot {
         }
 
         print.YareYareDaze();
+    }
+
+    private Avio rumb(Avio avio) {
+
+        print.escollirRumb();
+
+        Coordenada posicioRumb = avio.getPosicioRumb();
+
+        switch (teclat.llegirEnter("On vols anar? ")) {
+            case 1:
+
+                posicioRumb.setDireccio(Direccio.AMUNT);
+                avio.setPosicioRumb(posicioRumb);
+
+                break;
+            case 2:
+
+                posicioRumb.setDireccio(Direccio.AVALL);
+                avio.setPosicioRumb(posicioRumb);
+
+                break;
+            case 3:
+
+                posicioRumb.setDireccio(Direccio.ESQUERRA);
+                avio.setPosicioRumb(posicioRumb);
+
+                break;
+            case 4:
+
+                posicioRumb.setDireccio(Direccio.DRETA);
+                avio.setPosicioRumb(posicioRumb);
+
+                break;
+            default:
+                print.printNoOpcioSwitch();
+        }
+
+        return avio;
     }
 
     private Avio iniciarOperacio(Avio avio, ArrayList<Avio> avions) {

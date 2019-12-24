@@ -315,6 +315,17 @@ public class Print {
                 "Motors apagats\n");
     }
 
+    public void escollirRumb() {
+        System.out.print("" +
+                "\nRUMB A L'HOROTZÓ\n" +
+                "=======\n" +
+                "Punts cardinals\n" +
+                "1- Nord\n" +
+                "2- Sud\n" +
+                "3- Oest\n" +
+                "4- Est\n");
+    }
+
     public void volsEnlairar() {
         System.out.print("" +
                 "\nWARNING\n" +
