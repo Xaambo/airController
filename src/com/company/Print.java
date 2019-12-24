@@ -311,7 +311,7 @@ public class Print {
     public void noMotor() {
         System.out.print("" +
                 "\nWARNING\n" +
-                "=====\n" +
+                "=======\n" +
                 "Motors apagats\n");
     }
 
@@ -350,6 +350,13 @@ public class Print {
                 "\nWARNING\n" +
                 "=======\n" +
                 "Operativa finalitzada amb exit. (DEFCON 5)\n");
+    }
+
+    public void noMisils() {
+        System.out.print("" +
+                "\nWARNING\n" +
+                "=======\n" +
+                "No et queden misils\n");
     }
 
     public void operativaBegin() {

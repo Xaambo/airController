@@ -91,38 +91,43 @@ public class Pilot {
 
         if (avio instanceof AvioCombat) {
 
-            print.operativaBegin();
+            if (((AvioCombat) avio).getMisils().size() > 0) {
 
-            Collisio objCollisio;
+                print.operativaBegin();
 
-            misils = ((AvioCombat) avio).getMisils();
+                Collisio objCollisio;
 
-            objCollisio = collisio.logicaCollisio(avio, avions, avio.getPosicioRumb(), misils.get(0).getDistanciaDispar());
+                misils = ((AvioCombat) avio).getMisils();
 
-            avionsFiltre = print.llistaAvions(objCollisio.getAvionsEnRang(), Filtre.TOTS, 4);
+                objCollisio = collisio.logicaCollisio(avio, avions, avio.getPosicioRumb(), misils.get(0).getDistanciaDispar());
 
-            if (avionsFiltre.size() > 0) {
-                logic = this.logic.trobar(avionsFiltre);
+                avionsFiltre = print.llistaAvions(objCollisio.getAvionsEnRang(), Filtre.TOTS, 4);
 
-                if (logic.isSeleccionat()) {
+                if (avionsFiltre.size() > 0) {
+                    logic = this.logic.trobar(avionsFiltre);
 
-                    ((AvioCombat) avio).setEnMissio(true);
+                    if (logic.isSeleccionat()) {
 
-                    posicio = logic.getPosicio();
+                        ((AvioCombat) avio).setEnMissio(true);
 
-                    avio = avionsFiltre.get(posicio);
+                        posicio = logic.getPosicio();
 
-                    misils.remove(misils.size() - 1);
+                        avio = avionsFiltre.get(posicio);
 
-                    ((AvioCombat) avio).setMisils(misils);
+                        misils.remove(misils.size() - 1);
 
-                    logic.eliminarAvio(avio, avions);
+                        ((AvioCombat) avio).setMisils(misils);
 
-                    print.avioDestruit();
+                        logic.eliminarAvio(avio, avions);
 
-                } else {
-                    print.YareYareDaze();
+                        print.avioDestruit();
+
+                    } else {
+                        print.YareYareDaze();
+                    }
                 }
+            } else {
+
             }
         }
 
