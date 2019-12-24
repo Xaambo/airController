@@ -67,9 +67,11 @@ public class Logic {
         return logic;
     }
 
-    public Avio eliminarAvio(Avio avio) {
+    public Avio eliminarAvio(Avio avio, ArrayList<Avio> avions) {
 
         avio.setDestruit(true);
+
+        avions.remove(avio);
 
         return avio;
     }

@@ -147,7 +147,7 @@ public abstract class Avio {
 
         if (x > 1000 || y > 1000) {
 
-            logic.eliminarAvio(this);
+            logic.eliminarAvio(this, avions);
             print.avioPerdut();
 
         } else {

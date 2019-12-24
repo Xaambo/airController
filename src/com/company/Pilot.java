@@ -116,7 +116,7 @@ public class Pilot {
 
                     ((AvioCombat) avio).setMisils(misils);
 
-                    avions.remove(avio);
+                    logic.eliminarAvio(avio, avions);
 
                     print.avioDestruit();
 
@@ -227,7 +227,7 @@ public class Pilot {
 
                 } else if (zNew == 0 && avio.getPosicioRumb().getX() != 100 && (avio.getPosicioRumb().getY() < 100 || avio.getPosicioRumb().getY() > 120)) {
 
-                    avio = logic.eliminarAvio(avio);
+                    avio = logic.eliminarAvio(avio, avions);
                     print.avioDestruit();
 
                 } else {
@@ -261,7 +261,7 @@ public class Pilot {
                     avio.moviment(desti, avions);
                 } else {
                     print.terra();
-                    avio = velocitat(avio, avions);
+                    avio = alcada(avio, new Coordenada(avio.getPosicioRumb().getX(), avio.getPosicioRumb().getY(), avio.getPosicioRumb().getZ()), avions);
                 }
             } else {
                 print.noMinimVel();
