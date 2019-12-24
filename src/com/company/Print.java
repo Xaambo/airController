@@ -12,7 +12,12 @@ enum Filtre {
 
                 Avio avio = avions.get(i);
 
-                if (avio != null && !avio.isXifrat()) {
+                if (avio instanceof AvioCombat) {
+
+                    if (avio.isXifrat() && ((AvioCombat) avio).getAmic()) {
+                        avionsFiltrats.add(avio);
+                    }
+                } else if (avio != null && !avio.isXifrat()) {
                     avionsFiltrats.add(avio);
                 }
             }
@@ -21,7 +26,7 @@ enum Filtre {
         }
     },
 
-    XIFRATS {
+    TOTS {
         @Override
         ArrayList<Avio> filtrar(ArrayList<Avio> avions, ArrayList<Avio> avionsFiltrats) {
 
@@ -29,7 +34,7 @@ enum Filtre {
 
                 Avio avio = avions.get(i);
 
-                if (avio != null && avio.isXifrat()) {
+                if (avio != null) {
                     avionsFiltrats.add(avio);
                 }
             }
@@ -305,7 +310,7 @@ public class Print {
 
     public void noMotor() {
         System.out.print("" +
-                "\nERROR\n" +
+                "\nWARNING\n" +
                 "=====\n" +
                 "Motors apagats\n");
     }
@@ -331,6 +336,27 @@ public class Print {
                 "\nWARNING\n" +
                 "=======\n" +
                 "L'avió ha sigut destruit.\n");
+    }
+
+    public void operativaDesc() {
+        System.out.print("" +
+                "\nWARNING\n" +
+                "=======\n" +
+                "No hi ha cap operativa en actiu.\n");
+    }
+
+    public void operativaEnd() {
+        System.out.print("" +
+                "\nWARNING\n" +
+                "=======\n" +
+                "Operativa finalitzada amb exit. (DEFCON 5)\n");
+    }
+
+    public void operativaBegin() {
+        System.out.print("" +
+                "\nWARNING\n" +
+                "=======\n" +
+                "Començem operativa. (DEFCON 3)\n");
     }
 
     public void velocitatEnlairar() {

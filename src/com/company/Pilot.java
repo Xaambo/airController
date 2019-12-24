@@ -7,6 +7,7 @@ public class Pilot {
     Print print = new Print();
     cLector teclat = new cLector();
     Logic logic = new Logic();
+    Collisio collisio = new Collisio();
 
     public void controlAvio(Avio avio, ArrayList<Avio> avions) {
 
@@ -83,14 +84,62 @@ public class Pilot {
 
     private Avio iniciarOperacio(Avio avio, ArrayList<Avio> avions) {
 
+        ArrayList<Avio> avionsFiltre;
+        ArrayList<Misil> misils;
+        Logic logic;
+        int posicio;
 
+        if (avio instanceof AvioCombat) {
+
+            ((AvioCombat) avio).setEnMissio(true);
+            print.operativaBegin();
+
+            Collisio objCollisio;
+
+            misils = ((AvioCombat) avio).getMisils();
+
+            objCollisio = collisio.logicaCollisio(avio, avions, avio.getPosicioRumb(), misils.get(0).getDistanciaDispar());
+
+            avionsFiltre = print.llistaAvions(objCollisio.getAvionsEnRang(), Filtre.TOTS, 4);
+
+            if (avionsFiltre.size() > 0) {
+                logic = this.logic.trobar(avionsFiltre);
+
+                if (logic.isSeleccionat()) {
+
+                    posicio = logic.getPosicio();
+
+                    avio = avionsFiltre.get(posicio);
+
+                    misils.remove(misils.size() - 1);
+
+                    ((AvioCombat) avio).setMisils(misils);
+
+                    avions.remove(avio);
+
+                    print.avioDestruit();
+
+                } else {
+                    print.YareYareDaze();
+                }
+            }
+        }
 
         return avio;
     }
 
     private Avio finalitzarOperacio(Avio avio) {
 
+        if (avio instanceof AvioCombat) {
 
+            if (((AvioCombat) avio).isEnMissio()) {
+                ((AvioCombat) avio).setEnMissio(false);
+                print.operativaEnd();
+            } else {
+                print.operativaDesc();
+            }
+
+        }
 
         return avio;
     }

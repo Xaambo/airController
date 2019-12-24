@@ -21,6 +21,10 @@ public class AvioCombat extends Avio {
         return misils;
     }
 
+    public void setMisils(ArrayList<Misil> misils) {
+        this.misils = misils;
+    }
+
     public boolean getAmic() {
         return amic;
     }

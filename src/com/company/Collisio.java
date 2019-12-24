@@ -61,7 +61,7 @@ public class Collisio {
 
                 if (distanciaTemp <= rang) {
                     distancia = distanciaTemp;
-                    avionsEnRang.add(avio);
+                    avionsEnRang.add(avioIterant);
                 }
             }
         }
