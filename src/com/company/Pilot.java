@@ -117,6 +117,8 @@ public class Pilot {
                 print.printNoOpcioSwitch();
         }
 
+        print.rumbCanviat();
+
         return avio;
     }
 

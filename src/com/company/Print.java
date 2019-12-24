@@ -458,6 +458,15 @@ public class Print {
                 "\n");
     }
 
+    public void rumbCanviat() {
+        System.out.print("" +
+                "\n" +
+                "==============================\n" +
+                "Rumb canviat satifactoriament!\n" +
+                "==============================" +
+                "\n");
+    }
+
     public void llistaGestio() {
         System.out.println("" +
                 "\nAVIONS CONTROLATS\n" +
