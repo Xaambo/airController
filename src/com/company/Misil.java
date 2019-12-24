@@ -19,4 +19,8 @@ public class Misil {
     public int getDistanciaDispar() {
         return distanciaDispar;
     }
+
+    public String getNom() {
+        return nom;
+    }
 }

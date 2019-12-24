@@ -14,7 +14,7 @@ enum Filtre {
 
                 if (avio instanceof AvioCombat) {
 
-                    if (avio.isXifrat() && ((AvioCombat) avio).getAmic()) {
+                    if (!avio.isXifrat() && ((AvioCombat) avio).getAmic()) {
                         avionsFiltrats.add(avio);
                     }
                 } else if (avio != null && !avio.isXifrat()) {
@@ -371,35 +371,35 @@ public class Print {
 
     public void noMinimVel() {
         System.out.print("" +
-                "\nERROR\n" +
-                "=====\n" +
+                "\nWARNING\n" +
+                "=======\n" +
                 "No vas a la velocitat mínima requerida\n");
     }
 
     public void massaAltura() {
         System.out.print("" +
-                "\nERROR\n" +
-                "=====\n" +
+                "\nWARNING\n" +
+                "=======\n" +
                 "Estas a massa altura, descendeix per sota dels 500 per fer això\n");
     }
 
     public void massaVelocitat() {
         System.out.print("" +
-                "\nERROR\n" +
-                "=====\n" +
+                "\nWARNING\n" +
+                "=======\n" +
                 "Vas massa ràpid, desaccelera per sota dels 300 per fer això\n");
     }
 
     public void terra() {
         System.out.print("" +
-                "\nERROR\n" +
+                "\nWARNING\n" +
                 "=====\n" +
                 "A terra no pots fer això\n");
     }
 
     public void alturaTren() {
         System.out.print("" +
-                "\nERROR\n" +
+                "\nWARNING\n" +
                 "=====\n" +
                 "No pots pujar tant amb el tren baixat.\n");
     }

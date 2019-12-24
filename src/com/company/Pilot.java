@@ -91,7 +91,6 @@ public class Pilot {
 
         if (avio instanceof AvioCombat) {
 
-            ((AvioCombat) avio).setEnMissio(true);
             print.operativaBegin();
 
             Collisio objCollisio;
@@ -106,6 +105,8 @@ public class Pilot {
                 logic = this.logic.trobar(avionsFiltre);
 
                 if (logic.isSeleccionat()) {
+
+                    ((AvioCombat) avio).setEnMissio(true);
 
                     posicio = logic.getPosicio();
 
@@ -255,7 +256,13 @@ public class Pilot {
         if (avio.getMotor()) {
 
             if (avio.getVelocitat() >= 150) {
-                avio.moviment(desti, avions);
+
+                if (avio.getPosicioRumb().getZ() > 0) {
+                    avio.moviment(desti, avions);
+                } else {
+                    print.terra();
+                    avio = velocitat(avio, avions);
+                }
             } else {
                 print.noMinimVel();
                 avio = velocitat(avio, avions);
