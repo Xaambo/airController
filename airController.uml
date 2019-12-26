@@ -36,8 +36,10 @@
       <point x="-84.25" y="310.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.6429435483870964" x="555.0381767042957" y="1637.4079367400695" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.41244909831297266" x="822.0" y="849.5" />
+  <SelectedNodes>
+    <node>com.company.Avio</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Methods</Category>
