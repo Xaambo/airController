@@ -17,8 +17,11 @@ public class Main {
         File directori = new File("hashes");
 
         if (!directori.exists()) {
+
             directori.mkdir();
+
         } else {
+
             File[] files = directori.listFiles();
 
             for (File file : files) {
