@@ -36,10 +36,10 @@ public class ControladorAeri {
                 case 3://estat actual dels avions
                     mostrarRadar();
                     break;
-                case 4://xifrar avions
+                case 4://xifrar avions combat
                     xifrarAvions();
                     break;
-                case 5://desxifrar avions
+                case 5://desxifrar avions combat
                     desxifrarAvions();
                     break;
                 default:

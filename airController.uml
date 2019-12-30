@@ -3,40 +3,40 @@
   <ID>JAVA</ID>
   <OriginalElement>com.company</OriginalElement>
   <nodes>
-    <node x="477.5" y="0.0">com.company.Avio</node>
-    <node x="368.0" y="1198.0">com.company.cLector</node>
-    <node x="1294.0" y="0.0">com.company.ControladorAeri</node>
-    <node x="1299.0" y="1198.0">com.company.Misil</node>
-    <node x="0.0" y="0.0">com.company.Print</node>
-    <node x="951.0" y="0.0">com.company.TableList</node>
-    <node x="656.0" y="671.0">com.company.AvioCombat</node>
-    <node x="840.0" y="1580.0">com.company.Main</node>
-    <node x="904.0" y="1198.0">com.company.Filtre</node>
-    <node x="1519.0" y="1198.0">com.company.Coordenada</node>
-    <node x="593.0" y="1198.0">com.company.Logic</node>
-    <node x="571.0" y="1580.0">com.company.Radar</node>
-    <node x="1106.0" y="1580.0">com.company.Criptologia</node>
-    <node x="150.0" y="1580.0">com.company.Collisio</node>
-    <node x="0.0" y="1198.0">com.company.Pilot</node>
-    <node x="0.0" y="1580.0">com.company.Direccio</node>
-    <node x="386.0" y="671.0">com.company.AvioComercial</node>
+    <node x="91.5" y="0.0">com.company.Avio</node>
+    <node x="371.0" y="897.0">com.company.cLector</node>
+    <node x="1234.0" y="0.0">com.company.ControladorAeri</node>
+    <node x="907.0" y="897.0">com.company.Misil</node>
+    <node x="565.0" y="0.0">com.company.TableList</node>
+    <node x="908.0" y="0.0">com.company.Print</node>
+    <node x="1234.0" y="1279.0">com.company.Main</node>
+    <node x="0.0" y="671.0">com.company.AvioCombat</node>
+    <node x="0.0" y="1279.0">com.company.Filtre</node>
+    <node x="1127.0" y="897.0">com.company.Coordenada</node>
+    <node x="595.0" y="897.0">com.company.Logic</node>
+    <node x="968.0" y="1279.0">com.company.Radar</node>
+    <node x="0.0" y="1463.0">com.company.Criptologia</node>
+    <node x="546.0" y="1279.0">com.company.Collisio</node>
+    <node x="0.0" y="897.0">com.company.Pilot</node>
+    <node x="397.0" y="1279.0">com.company.Direccio</node>
+    <node x="270.0" y="671.0">com.company.AvioComercial</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.company.AvioCombat" target="com.company.Avio">
-      <point x="0.0" y="-90.5" />
-      <point x="781.0" y="646.0" />
-      <point x="730.25" y="646.0" />
-      <point x="84.25" y="310.5" />
-    </edge>
     <edge source="com.company.AvioComercial" target="com.company.Avio">
       <point x="0.0" y="-90.5" />
-      <point x="511.0" y="646.0" />
-      <point x="561.75" y="646.0" />
+      <point x="395.0" y="646.0" />
+      <point x="344.25" y="646.0" />
+      <point x="84.25" y="310.5" />
+    </edge>
+    <edge source="com.company.AvioCombat" target="com.company.Avio">
+      <point x="0.0" y="-90.5" />
+      <point x="125.0" y="646.0" />
+      <point x="175.75" y="646.0" />
       <point x="-84.25" y="310.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.41244909831297266" x="822.0" y="849.5" />
+  <settings layout="Hierarchic Group" zoom="0.3164630599185573" x="822.0" y="849.5000000000001" />
   <SelectedNodes>
     <node>com.company.Avio</node>
   </SelectedNodes>
