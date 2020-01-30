@@ -126,6 +126,7 @@ public class Pilot {
 
         ArrayList<Avio> avionsFiltre;
         ArrayList<Misil> misils;
+        Avio avioComercial;
         Logic logic;
         int posicio;
 
@@ -152,13 +153,13 @@ public class Pilot {
 
                         posicio = logic.getPosicio();
 
-                        avio = avionsFiltre.get(posicio);
+                        avioComercial = avionsFiltre.get(posicio);
 
                         misils.remove(misils.size() - 1);
 
                         ((AvioCombat) avio).setMisils(misils);
 
-                        logic.eliminarAvio(avio, avions);
+                        logic.eliminarAvio(avioComercial, avions);
 
                         print.avioDestruit();
 
